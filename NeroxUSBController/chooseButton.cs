@@ -10,7 +10,7 @@ using System.ComponentModel;
 namespace NeroxUSBController
 {
 
-    class chooseButton : Control
+    class ChooseButton : Control
     {
         private SolidBrush borderBrush, textBrush;
         private Rectangle borderRectangle;
@@ -26,7 +26,7 @@ namespace NeroxUSBController
         [Description("Activated Color"), Category("Appearance"), DefaultValue(0), Browsable(true)]
         public Color ActiveColor { get; set; }
 
-        public chooseButton()
+        public ChooseButton()
         {
             borderBrush = new SolidBrush(Color.Red);
             textBrush = new SolidBrush(Color.White);
@@ -34,15 +34,19 @@ namespace NeroxUSBController
             stringFormat.Alignment = StringAlignment.Center;
             stringFormat.LineAlignment = StringAlignment.Center;
 
+            this.AllowDrop = true;
+
             this.Paint += chooseButton_Paint;
+            this.DragEnter += chooseButton_DragEnter;
+            this.DragDrop += chooseButton_DragDrop;
         }
 
-        public void chooseButton_Paint(object sender, PaintEventArgs e)
+        private void chooseButton_Paint(object sender, PaintEventArgs e)
         {
             pushColor = Color.FromArgb(ActiveColor.R / 2, ActiveColor.G / 2, ActiveColor.B / 2);
             borderRectangle = new Rectangle(0, 0, Width, Height);
             e.Graphics.DrawRectangle(new Pen(borderBrush, BorderThickness), borderRectangle);
-            e.Graphics.DrawString(this.Text, this.Font, (active && pressed) ? textBrush : borderBrush, borderRectangle, stringFormat);
+            e.Graphics.DrawString(this.Text, this.Font, (active) ? textBrush : borderBrush, borderRectangle, stringFormat);
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -71,9 +75,21 @@ namespace NeroxUSBController
             {
                 base.OnMouseUp(e);
                 base.BackColor = backColor;
-                active = true;
+                active = false;
                 pressed = false;
             }
+        }
+
+        private void chooseButton_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
+
+        private void chooseButton_DragDrop(object sender, DragEventArgs e)
+        {
+            TreeNode node = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
+            Console.WriteLine(node);
+            Console.WriteLine(sender);
         }
 
         public Boolean isActive() { return pressed; }

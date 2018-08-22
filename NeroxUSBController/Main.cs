@@ -8,25 +8,26 @@ namespace NeroxUSBController
     {
         public Boolean pressedAny = false;
         public object ActiveButton;
+        private Point lastPoint;
 
         public Main()
         {
             InitializeComponent();
             treeView.Size = side_panel.Size;
-            this.colorPick1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chooseButton0_Click);
-            this.colorPick1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chooseButton1_Click);
-            this.colorPick1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chooseButton2_Click);
-            this.colorPick1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chooseButton3_Click);
-            this.colorPick1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chooseButton4_Click);
-            this.colorPick1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chooseButton5_Click);
+            this.colorPick1.MouseDown += new MouseEventHandler(this.chooseButton0_Click);
+            this.colorPick1.MouseDown += new MouseEventHandler(this.chooseButton1_Click);
+            this.colorPick1.MouseDown += new MouseEventHandler(this.chooseButton2_Click);
+            this.colorPick1.MouseDown += new MouseEventHandler(this.chooseButton3_Click);
+            this.colorPick1.MouseDown += new MouseEventHandler(this.chooseButton4_Click);
+            this.colorPick1.MouseDown += new MouseEventHandler(this.chooseButton5_Click);
+            this.colorPick1.MouseDown += new MouseEventHandler(this.toggleSwitch1_Click);
+            this.colorPick1.MouseDown += new MouseEventHandler(this.toggleSwitch2_Click);
         }
 
         private void control_panel_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
         }
-
-        Point lastPoint;
 
         private void control_panel_MouseMove(object sender, MouseEventArgs e)
         {
@@ -35,10 +36,6 @@ namespace NeroxUSBController
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
             }
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
         }
 
         private void chooseButton0_Click(object sender, EventArgs e)
@@ -59,12 +56,12 @@ namespace NeroxUSBController
             }
             if (chooseButton0.isClicked())
             {
-                if (sender is chooseButton)
+                if (sender is ChooseButton)
                 {
-                    chooseButton button = (chooseButton)sender;
+                    ChooseButton button = (ChooseButton)sender;
                     this.deactivateAll();
                     pressedAny = false;
-                    colorPick1.ForeColor = chooseButton0.BackColor;
+                    colorPick1.ForeColor = chooseButton0.ActiveColor;
                 }
             }
         }
@@ -87,13 +84,12 @@ namespace NeroxUSBController
             }
             else if (chooseButton1.isClicked())
             {
-                if (sender is chooseButton)
+                if (sender is ChooseButton)
                 {
-                    chooseButton button = (chooseButton)sender;
+                    ChooseButton button = (ChooseButton)sender;
                     this.deactivateAll();
                     pressedAny = false;
-                    colorPick1.ForeColor = chooseButton1.BackColor;
-
+                    colorPick1.ForeColor = chooseButton1.ActiveColor;
                 }
             }
         }
@@ -116,12 +112,12 @@ namespace NeroxUSBController
             }
             else if (chooseButton2.isClicked())
             {
-                if (sender is chooseButton)
+                if (sender is ChooseButton)
                 {
-                    chooseButton button = (chooseButton)sender;
+                    ChooseButton button = (ChooseButton)sender;
                     this.deactivateAll();
                     pressedAny = false;
-                    colorPick1.ForeColor = chooseButton2.BackColor;
+                    colorPick1.ForeColor = chooseButton2.ActiveColor;
                 }
             }
         }
@@ -144,12 +140,12 @@ namespace NeroxUSBController
             }
             else if (chooseButton3.isClicked())
             {
-                if (sender is chooseButton)
+                if (sender is ChooseButton)
                 {
-                    chooseButton button = (chooseButton)sender;
+                    ChooseButton button = (ChooseButton)sender;
                     this.deactivateAll();
                     pressedAny = false;
-                    colorPick1.ForeColor = chooseButton3.BackColor;
+                    colorPick1.ForeColor = chooseButton3.ActiveColor;
                 }
             }
         }
@@ -172,12 +168,12 @@ namespace NeroxUSBController
             }
             else if (chooseButton4.isClicked())
             {
-                if (sender is chooseButton)
+                if (sender is ChooseButton)
                 {
-                    chooseButton button = (chooseButton)sender;
+                    ChooseButton button = (ChooseButton)sender;
                     this.deactivateAll();
                     pressedAny = false;
-                    colorPick1.ForeColor = chooseButton4.BackColor;
+                    colorPick1.ForeColor = chooseButton4.ActiveColor;
                 }
             }
         }
@@ -200,17 +196,17 @@ namespace NeroxUSBController
             }
             else if (chooseButton5.isClicked())
             {
-                if (sender is chooseButton)
+                if (sender is ChooseButton)
                 {
-                    chooseButton button = (chooseButton)sender;
+                    ChooseButton button = (ChooseButton)sender;
                     this.deactivateAll();
                     pressedAny = false;
-                    colorPick1.ForeColor = chooseButton5.BackColor;
+                    colorPick1.ForeColor = chooseButton5.ActiveColor;
                 }
             }
         }
 
-        private void deactivateAll()
+        public void deactivateAll()
         {
             chooseButton0.deactivateButton();
             chooseButton1.deactivateButton();
@@ -218,6 +214,67 @@ namespace NeroxUSBController
             chooseButton3.deactivateButton();
             chooseButton4.deactivateButton();
             chooseButton5.deactivateButton();
+            toggleSwitch1.deactivateSwitch();
+            toggleSwitch2.deactivateSwitch();
         }
+
+        private void toggleSwitch1_Click(object sender, EventArgs e)
+        {
+            // isActive gives previous status
+            if (toggleSwitch1.isActive())
+            {
+                if (sender is ColorPick)
+                {
+                    toggleSwitch1.ActiveColor = colorPick1.ForeColor;
+                    toggleSwitch1.Refresh();
+                }
+                else if (sender is ToggleSwitch)
+                {
+                    colorPick1.ForeColor = toggleSwitch1.ActiveColor;
+                    //this.deactivateAll();
+                    pressedAny = false;
+                }
+            }
+            else if (sender is ToggleSwitch)
+            {
+                colorPick1.ForeColor = colorPick1.Parent.BackColor;
+                pressedAny = false;
+            }
+        }
+
+        private void toggleSwitch2_Click(object sender, EventArgs e)
+        {
+            // isActive gives previous status
+            if (toggleSwitch2.isActive())
+            {
+                if (sender is ColorPick)
+                {
+                    toggleSwitch2.ActiveColor = colorPick1.ForeColor;
+                    toggleSwitch2.Refresh();
+                }
+                else if (sender is ToggleSwitch)
+                {
+                    colorPick1.ForeColor = toggleSwitch2.ActiveColor;
+                    //this.deactivateAll();
+                    pressedAny = false;
+                }
+            }
+            else if (sender is ToggleSwitch)
+            {
+                colorPick1.ForeColor = colorPick1.Parent.BackColor;
+                pressedAny = false;
+            }
+        }
+
+        public void colorPickReset()
+        {
+            colorPick1.ForeColor = colorPick1.Parent.BackColor;
+            colorPick1.Refresh();
+        }
+
+        public Panel GetButtonPanel() { return this.button_panel; }
+        public Panel GetPropertyPanel() { return this.property_panel; }
+        public Panel GetSettingsPanel() { return this.settings_panel; }
+        public Panel GetSettingsSidePanel() { return this.settingsSide_panel; }
     }
 }

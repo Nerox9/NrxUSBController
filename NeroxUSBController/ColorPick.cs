@@ -37,6 +37,7 @@ namespace NeroxUSBController
             Rectangle rect = new Rectangle(xmin+2, ymin+5, wid-4, hgt-10);
             e.Graphics.FillEllipse(br, rect);
 
+            e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
             e.Graphics.DrawImage(buttonImage, 0.0f, 0.0f, wid, hgt);
         }
 
@@ -49,6 +50,19 @@ namespace NeroxUSBController
             {
                 // Set form background to the selected color.
                 base.ForeColor = colorDialog.Color;
+            }
+            else
+            {
+                Main main = (Main)Parent.Parent;
+                if (sender is ChooseButton)
+                {
+                    ChooseButton button = (ChooseButton)main.ActiveButton;
+                    base.ForeColor = button.ActiveColor;
+                }
+                else
+                {
+                    Console.WriteLine(sender);
+                }
             }
         }
 

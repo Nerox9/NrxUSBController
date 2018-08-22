@@ -118,7 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="metal_setting_indicator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\button\metal_setting_indicator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="metal_setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\button\metal_setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="metal_esc_indicator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\button\metal_esc_indicator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="metal_esc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\button\metal_esc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pot_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\pot\pot_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="metal_gui_indicator" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\icon\metal_gui_indicator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pot_head" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\pot\pot_head.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pot_head_indicator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\pot\pot_head_indicator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

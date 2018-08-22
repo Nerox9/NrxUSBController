@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace NeroxUSBController
 {
-    class Property_Control_Text : TextBox
+    class PropertyControlText : TextBox
     {
-        public Property_Control_Text()
+        public PropertyControlText()
         {
             this.KeyPress += NameTextBox_KeyPress;
         }
@@ -17,7 +17,7 @@ namespace NeroxUSBController
         public void NameTextBox_TextChanged(object sender, EventArgs e)
         {
             Main main = (Main)Parent.Parent;
-            chooseButton button = (chooseButton)main.ActiveButton;
+            ChooseButton button = (ChooseButton)main.ActiveButton;
             if (!(button is null))
             {
                 button.Text = this.Text;
@@ -30,7 +30,7 @@ namespace NeroxUSBController
             if (e.KeyChar == (char)Keys.Enter)
             {
                 Main main = (Main)Parent.Parent;
-                chooseButton button = (chooseButton)main.ActiveButton;
+                ChooseButton button = (ChooseButton)main.ActiveButton;
                 if (!(button is null))
                     button.Text = this.Text;
                 main.ActiveControl = Parent;
