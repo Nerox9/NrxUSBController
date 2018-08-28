@@ -51,19 +51,6 @@ namespace NeroxUSBController
                 // Set form background to the selected color.
                 base.ForeColor = colorDialog.Color;
             }
-            else
-            {
-                Main main = (Main)Parent.Parent;
-                if (sender is ChooseButton)
-                {
-                    ChooseButton button = (ChooseButton)main.ActiveButton;
-                    base.ForeColor = button.ActiveColor;
-                }
-                else
-                {
-                    Console.WriteLine(sender);
-                }
-            }
         }
 
         private Color lighterColor(Color baseColor, int lightLevel)

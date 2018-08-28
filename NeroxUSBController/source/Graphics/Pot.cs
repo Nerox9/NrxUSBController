@@ -23,7 +23,7 @@ namespace NeroxUSBController
         [Description("Rotor High Angle Limit"), Category("Pot Appearance"), DefaultValue(-90), Browsable(true)]
         public int HighLimit { get; set; }
 
-        private Boolean active = false;
+        private Boolean active = true;
         private int RotAngle = 0;
 
         public Pot()

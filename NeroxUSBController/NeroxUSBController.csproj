@@ -11,6 +11,21 @@
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,59 +46,248 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CloudrailSI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twitter.Api.1.0.4\lib\CloudrailSI.dll</HintPath>
+    </Reference>
+    <Reference Include="Hammock.ClientProfile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBS.WebSocketInterface.3.0.0\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="obs-websocket-dotnet, Version=4.2.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\obs-websocket-dotnet.4.2.0-beta3\lib\net40\obs-websocket-dotnet.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenSSL.PrivateKeyDecoder, Version=1.2.0.0, Culture=neutral, PublicKeyToken=78f5ba1b024431f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenSSL.PrivateKeyDecoder.1.2.0\lib\net45\OpenSSL.PrivateKeyDecoder.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenSSL.X509Certificate2.Provider, Version=1.2.0.0, Culture=neutral, PublicKeyToken=78f5ba1b024431f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenSSL.X509Certificate2.Provider.1.2.0\lib\net45\OpenSSL.X509Certificate2.Provider.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.7.1\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Extensions.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Extensions.Logging.2.0.2\lib\net461\Serilog.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine, Version=0.10.0.0, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.ClientEngine.Core.0.10.0\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Specialized, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Specialized.4.3.0\lib\net46\System.Collections.Specialized.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.NameResolution, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.NameResolution.4.3.0\lib\net46\System.Net.NameResolution.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Security, Version=4.0.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Security.4.3.2\lib\net46\System.Net.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TweetSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\TweetSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.Api, Version=2.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TwitchLib.Api.2.1.3\lib\net452\TwitchLib.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.Api.Enums, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TwitchLib.Api.Enums.1.0.0\lib\net452\TwitchLib.Api.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.Api.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TwitchLib.Api.Interfaces.1.0.0\lib\net452\TwitchLib.Api.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.Api.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TwitchLib.Api.Models.1.0.0\lib\net452\TwitchLib.Api.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.Client, Version=2.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TwitchLib.Client.2.1.4\lib\net452\TwitchLib.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.Client.Enums, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TwitchLib.Client.Enums.1.0.0\lib\net452\TwitchLib.Client.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.Client.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TwitchLib.Client.Models.1.0.0\lib\net452\TwitchLib.Client.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.PubSub, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TwitchLib.PubSub.2.0.3\lib\net452\TwitchLib.PubSub.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp, Version=1.0.2.59611, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocketSharp.1.0.3-rc11\lib\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSocket4Net, Version=0.15.2.11, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocket4Net.0.15.2\lib\net45\WebSocket4Net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChooseButton.cs">
+    <Compile Include="source\Graphics\ChooseButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ColorPick.cs">
+    <Compile Include="source\Graphics\ColorPick.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ColorWheel.cs">
+    <Compile Include="source\Graphics\ColorWheel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="source\Property\ControllerProperty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="source\Wrappers\Obs.cs" />
+    <Compile Include="source\Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="source\Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pot.cs">
+    <Compile Include="source\Property\Obs_Property.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="source\Graphics\Pot.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertyControlText.cs">
+    <Compile Include="source\Controllers\PropertyControlText.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="AppTreeView.cs">
+    <Compile Include="source\Graphics\AppTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Settings.cs">
+    <Compile Include="source\Controllers\PropertyPanelController.cs" />
+    <Compile Include="source\Wrappers\SerialCom.cs" />
+    <Compile Include="source\Forms\Settings.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SystemAppButton.cs">
+    <Compile Include="source\Forms\SystemAppButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SystemPanel.cs">
+    <Compile Include="source\Forms\SystemPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ToggleSwitch.cs">
+    <Compile Include="source\Graphics\ToggleSwitch.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="Main.resx">
+    <Compile Include="source\Wrappers\Twitch.cs" />
+    <Compile Include="data\TwitchInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TwitchInfo.resx</DependentUpon>
+    </Compile>
+    <Compile Include="source\Property\Twitch_Property.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="source\Wrappers\Twitter.cs" />
+    <Compile Include="source\Property\Twitter_Property.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="source\Controllers\UserController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="source\Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -96,6 +300,33 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="data\TwitchInfo.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TwitchInfo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="external\libobs\data\bicubic_scale.effect" />
+    <None Include="external\libobs\data\bilinear_lowres_scale.effect" />
+    <None Include="external\libobs\data\default.effect" />
+    <None Include="external\libobs\data\default_rect.effect" />
+    <None Include="external\libobs\data\deinterlace_base.effect" />
+    <None Include="external\libobs\data\deinterlace_blend.effect" />
+    <None Include="external\libobs\data\deinterlace_blend_2x.effect" />
+    <None Include="external\libobs\data\deinterlace_discard.effect" />
+    <None Include="external\libobs\data\deinterlace_discard_2x.effect" />
+    <None Include="external\libobs\data\deinterlace_linear.effect" />
+    <None Include="external\libobs\data\deinterlace_linear_2x.effect" />
+    <None Include="external\libobs\data\deinterlace_yadif.effect" />
+    <None Include="external\libobs\data\deinterlace_yadif_2x.effect" />
+    <None Include="external\libobs\data\format_conversion.effect" />
+    <None Include="external\libobs\data\lanczos_scale.effect" />
+    <None Include="external\libobs\data\opaque.effect" />
+    <None Include="external\libobs\data\premultiplied_alpha.effect" />
+    <None Include="external\libobs\data\solid.effect" />
+    <None Include="external\libobs\LibObsConfig.cmake.in" />
+    <None Include="external\libobs\LibObsConfigVersion.cmake.in" />
+    <None Include="external\libobs\obsconfig.h.in" />
+    <None Include="external\libobs\util\platform-cocoa.m" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -132,6 +363,201 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="data\pot\pot_head_indicator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="external\libobs\audio-monitoring\null\null-audio-monitoring.c" />
+    <Content Include="external\libobs\audio-monitoring\osx\coreaudio-enum-devices.c" />
+    <Content Include="external\libobs\audio-monitoring\osx\coreaudio-output.c" />
+    <Content Include="external\libobs\audio-monitoring\osx\mac-helpers.h" />
+    <Content Include="external\libobs\audio-monitoring\pulse\pulseaudio-enum-devices.c" />
+    <Content Include="external\libobs\audio-monitoring\pulse\pulseaudio-output.c" />
+    <Content Include="external\libobs\audio-monitoring\pulse\pulseaudio-wrapper.c" />
+    <Content Include="external\libobs\audio-monitoring\pulse\pulseaudio-wrapper.h" />
+    <Content Include="external\libobs\audio-monitoring\win32\wasapi-enum-devices.c" />
+    <Content Include="external\libobs\audio-monitoring\win32\wasapi-output.c" />
+    <Content Include="external\libobs\audio-monitoring\win32\wasapi-output.h" />
+    <Content Include="external\libobs\callback\calldata.c" />
+    <Content Include="external\libobs\callback\calldata.h" />
+    <Content Include="external\libobs\callback\decl.c" />
+    <Content Include="external\libobs\callback\decl.h" />
+    <Content Include="external\libobs\callback\proc.c" />
+    <Content Include="external\libobs\callback\proc.h" />
+    <Content Include="external\libobs\callback\signal.c" />
+    <Content Include="external\libobs\callback\signal.h" />
+    <Content Include="external\libobs\CMakeLists.txt" />
+    <Content Include="external\libobs\graphics\axisang.c" />
+    <Content Include="external\libobs\graphics\axisang.h" />
+    <Content Include="external\libobs\graphics\basemath.hpp" />
+    <Content Include="external\libobs\graphics\bounds.c" />
+    <Content Include="external\libobs\graphics\bounds.h" />
+    <Content Include="external\libobs\graphics\device-exports.h" />
+    <Content Include="external\libobs\graphics\effect-parser.c" />
+    <Content Include="external\libobs\graphics\effect-parser.h" />
+    <Content Include="external\libobs\graphics\effect.c" />
+    <Content Include="external\libobs\graphics\effect.h" />
+    <Content Include="external\libobs\graphics\graphics-ffmpeg.c" />
+    <Content Include="external\libobs\graphics\graphics-imports.c" />
+    <Content Include="external\libobs\graphics\graphics-internal.h" />
+    <Content Include="external\libobs\graphics\graphics-magick.c" />
+    <Content Include="external\libobs\graphics\graphics.c" />
+    <Content Include="external\libobs\graphics\graphics.h" />
+    <Content Include="external\libobs\graphics\image-file.c" />
+    <Content Include="external\libobs\graphics\image-file.h" />
+    <Content Include="external\libobs\graphics\input.h" />
+    <Content Include="external\libobs\graphics\libnsgif\libnsgif.c" />
+    <Content Include="external\libobs\graphics\libnsgif\libnsgif.h" />
+    <Content Include="external\libobs\graphics\math-defs.h" />
+    <Content Include="external\libobs\graphics\math-extra.c" />
+    <Content Include="external\libobs\graphics\math-extra.h" />
+    <Content Include="external\libobs\graphics\matrix3.c" />
+    <Content Include="external\libobs\graphics\matrix3.h" />
+    <Content Include="external\libobs\graphics\matrix4.c" />
+    <Content Include="external\libobs\graphics\matrix4.h" />
+    <Content Include="external\libobs\graphics\plane.c" />
+    <Content Include="external\libobs\graphics\plane.h" />
+    <Content Include="external\libobs\graphics\quat.c" />
+    <Content Include="external\libobs\graphics\quat.h" />
+    <Content Include="external\libobs\graphics\shader-parser.c" />
+    <Content Include="external\libobs\graphics\shader-parser.h" />
+    <Content Include="external\libobs\graphics\texture-render.c" />
+    <Content Include="external\libobs\graphics\vec2.c" />
+    <Content Include="external\libobs\graphics\vec2.h" />
+    <Content Include="external\libobs\graphics\vec3.c" />
+    <Content Include="external\libobs\graphics\vec3.h" />
+    <Content Include="external\libobs\graphics\vec4.c" />
+    <Content Include="external\libobs\graphics\vec4.h" />
+    <Content Include="external\libobs\media-io\audio-io.c" />
+    <Content Include="external\libobs\media-io\audio-io.h" />
+    <Content Include="external\libobs\media-io\audio-math.h" />
+    <Content Include="external\libobs\media-io\audio-resampler-ffmpeg.c" />
+    <Content Include="external\libobs\media-io\audio-resampler.h" />
+    <Content Include="external\libobs\media-io\format-conversion.c" />
+    <Content Include="external\libobs\media-io\format-conversion.h" />
+    <Content Include="external\libobs\media-io\frame-rate.h" />
+    <Content Include="external\libobs\media-io\media-io-defs.h" />
+    <Content Include="external\libobs\media-io\media-remux.c" />
+    <Content Include="external\libobs\media-io\media-remux.h" />
+    <Content Include="external\libobs\media-io\video-fourcc.c" />
+    <Content Include="external\libobs\media-io\video-frame.c" />
+    <Content Include="external\libobs\media-io\video-frame.h" />
+    <Content Include="external\libobs\media-io\video-io.c" />
+    <Content Include="external\libobs\media-io\video-io.h" />
+    <Content Include="external\libobs\media-io\video-matrices.c" />
+    <Content Include="external\libobs\media-io\video-scaler-ffmpeg.c" />
+    <Content Include="external\libobs\media-io\video-scaler.h" />
+    <Content Include="external\libobs\obs-audio-controls.c" />
+    <Content Include="external\libobs\obs-audio-controls.h" />
+    <Content Include="external\libobs\obs-audio.c" />
+    <Content Include="external\libobs\obs-avc.c" />
+    <Content Include="external\libobs\obs-avc.h" />
+    <Content Include="external\libobs\obs-cocoa.c" />
+    <Content Include="external\libobs\obs-config.h" />
+    <Content Include="external\libobs\obs-data.c" />
+    <Content Include="external\libobs\obs-data.h" />
+    <Content Include="external\libobs\obs-defs.h" />
+    <Content Include="external\libobs\obs-display.c" />
+    <Content Include="external\libobs\obs-encoder.c" />
+    <Content Include="external\libobs\obs-encoder.h" />
+    <Content Include="external\libobs\obs-ffmpeg-compat.h" />
+    <Content Include="external\libobs\obs-hotkey-name-map.c" />
+    <Content Include="external\libobs\obs-hotkey.c" />
+    <Content Include="external\libobs\obs-hotkey.h" />
+    <Content Include="external\libobs\obs-hotkeys.h" />
+    <Content Include="external\libobs\obs-interaction.h" />
+    <Content Include="external\libobs\obs-internal.h" />
+    <Content Include="external\libobs\obs-module.c" />
+    <Content Include="external\libobs\obs-module.h" />
+    <Content Include="external\libobs\obs-nix.c" />
+    <Content Include="external\libobs\obs-output-delay.c" />
+    <Content Include="external\libobs\obs-output.c" />
+    <Content Include="external\libobs\obs-output.h" />
+    <Content Include="external\libobs\obs-properties.c" />
+    <Content Include="external\libobs\obs-properties.h" />
+    <Content Include="external\libobs\obs-scene.c" />
+    <Content Include="external\libobs\obs-scene.h" />
+    <Content Include="external\libobs\obs-service.c" />
+    <Content Include="external\libobs\obs-service.h" />
+    <Content Include="external\libobs\obs-source-deinterlace.c" />
+    <Content Include="external\libobs\obs-source-transition.c" />
+    <Content Include="external\libobs\obs-source.c" />
+    <Content Include="external\libobs\obs-source.h" />
+    <Content Include="external\libobs\obs-ui.h" />
+    <Content Include="external\libobs\obs-video.c" />
+    <Content Include="external\libobs\obs-view.c" />
+    <Content Include="external\libobs\obs-win-crash-handler.c" />
+    <Content Include="external\libobs\obs-windows.c" />
+    <Content Include="external\libobs\obs.c" />
+    <Content Include="external\libobs\obs.h" />
+    <Content Include="external\libobs\obs.hpp" />
+    <Content Include="external\libobs\util\AlignedNew.hpp" />
+    <Content Include="external\libobs\util\array-serializer.c" />
+    <Content Include="external\libobs\util\array-serializer.h" />
+    <Content Include="external\libobs\util\base.c" />
+    <Content Include="external\libobs\util\base.h" />
+    <Content Include="external\libobs\util\bmem.c" />
+    <Content Include="external\libobs\util\bmem.h" />
+    <Content Include="external\libobs\util\c99defs.h" />
+    <Content Include="external\libobs\util\cf-lexer.c" />
+    <Content Include="external\libobs\util\cf-lexer.h" />
+    <Content Include="external\libobs\util\cf-parser.c" />
+    <Content Include="external\libobs\util\cf-parser.h" />
+    <Content Include="external\libobs\util\circlebuf.h" />
+    <Content Include="external\libobs\util\config-file.c" />
+    <Content Include="external\libobs\util\config-file.h" />
+    <Content Include="external\libobs\util\crc32.c" />
+    <Content Include="external\libobs\util\crc32.h" />
+    <Content Include="external\libobs\util\darray.h" />
+    <Content Include="external\libobs\util\dstr.c" />
+    <Content Include="external\libobs\util\dstr.h" />
+    <Content Include="external\libobs\util\dstr.hpp" />
+    <Content Include="external\libobs\util\file-serializer.c" />
+    <Content Include="external\libobs\util\file-serializer.h" />
+    <Content Include="external\libobs\util\lexer.c" />
+    <Content Include="external\libobs\util\lexer.h" />
+    <Content Include="external\libobs\util\pipe-posix.c" />
+    <Content Include="external\libobs\util\pipe-windows.c" />
+    <Content Include="external\libobs\util\pipe.h" />
+    <Content Include="external\libobs\util\platform-nix-dbus.c" />
+    <Content Include="external\libobs\util\platform-nix.c" />
+    <Content Include="external\libobs\util\platform-windows.c" />
+    <Content Include="external\libobs\util\platform.c" />
+    <Content Include="external\libobs\util\platform.h" />
+    <Content Include="external\libobs\util\profiler.c" />
+    <Content Include="external\libobs\util\profiler.h" />
+    <Content Include="external\libobs\util\profiler.hpp" />
+    <Content Include="external\libobs\util\serializer.h" />
+    <Content Include="external\libobs\util\text-lookup.c" />
+    <Content Include="external\libobs\util\text-lookup.h" />
+    <Content Include="external\libobs\util\threading-posix.c" />
+    <Content Include="external\libobs\util\threading-posix.h" />
+    <Content Include="external\libobs\util\threading-windows.c" />
+    <Content Include="external\libobs\util\threading-windows.h" />
+    <Content Include="external\libobs\util\threading.h" />
+    <Content Include="external\libobs\util\utf8.c" />
+    <Content Include="external\libobs\util\utf8.h" />
+    <Content Include="external\libobs\util\util.hpp" />
+    <Content Include="external\libobs\util\util_uint128.h" />
+    <Content Include="external\libobs\util\vc\vc_inttypes.h" />
+    <Content Include="external\libobs\util\vc\vc_stdbool.h" />
+    <Content Include="external\libobs\util\vc\vc_stdint.h" />
+    <Content Include="external\libobs\util\windows\ComPtr.hpp" />
+    <Content Include="external\libobs\util\windows\CoTaskMemPtr.hpp" />
+    <Content Include="external\libobs\util\windows\HRError.hpp" />
+    <Content Include="external\libobs\util\windows\win-registry.h" />
+    <Content Include="external\libobs\util\windows\win-version.h" />
+    <Content Include="external\libobs\util\windows\WinHandle.hpp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

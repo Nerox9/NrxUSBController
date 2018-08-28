@@ -10,7 +10,7 @@ using System.ComponentModel;
 namespace NeroxUSBController
 {
 
-    class ChooseButton : Control
+    class ChooseButton : UserController
     {
         private SolidBrush borderBrush, textBrush;
         private Rectangle borderRectangle;
@@ -19,6 +19,7 @@ namespace NeroxUSBController
         private StringFormat stringFormat = new StringFormat();
         private Color pushColor;
         private Color backColor;
+        Main main;
 
         public override Cursor Cursor { get; set; } = Cursors.Hand;
         [Description("Sets the Border Thickness"), Category("Appearance"), DefaultValue(3), Browsable(true)]
@@ -35,10 +36,18 @@ namespace NeroxUSBController
             stringFormat.LineAlignment = StringAlignment.Center;
 
             this.AllowDrop = true;
+            this.DoubleBuffered = true;
 
             this.Paint += chooseButton_Paint;
             this.DragEnter += chooseButton_DragEnter;
             this.DragDrop += chooseButton_DragDrop;
+            this.Click += chooseButton_Click;
+        }
+
+        internal void setChooseButton()
+        {
+            main = (Main)Parent.Parent;
+            main.ColorPickMouseDown(new MouseEventHandler(this.chooseButton_Click));
         }
 
         private void chooseButton_Paint(object sender, PaintEventArgs e)
@@ -60,7 +69,6 @@ namespace NeroxUSBController
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            Main main = (Main)Parent.Parent;
             if (!pressed && !main.pressedAny)
             {
                 base.OnMouseUp(e);
@@ -68,15 +76,40 @@ namespace NeroxUSBController
                 active = false;
                 pressed = true;
                 main.pressedAny = true;
-                main.ActiveButton = this;
+                main.ActiveSelection = this;
+                main.SetPropertyPanelController(this);
             }
 
             else
             {
                 base.OnMouseUp(e);
                 base.BackColor = backColor;
+                main.resetColorPickForeColor();
                 active = false;
                 pressed = false;
+            }
+        }
+
+        private void chooseButton_Click(object sender, EventArgs e)
+        {
+            // isActive gives previous status
+            if (this.isActive())
+            {
+                if (sender is ColorPick)
+                {
+                    this.BackColor = main.ColorPickForeColor();
+                    this.ActiveColor = main.ColorPickForeColor();
+                }
+            }
+            else if (this.isClicked())
+            {
+                if (sender is ChooseButton)
+                {
+                    ChooseButton button = (ChooseButton)sender;
+                    main.deactivateAll();
+                    main.pressedAny = false;
+                    main.ColorPickForeColor(this.ActiveColor);
+                }
             }
         }
 
@@ -88,13 +121,16 @@ namespace NeroxUSBController
         private void chooseButton_DragDrop(object sender, DragEventArgs e)
         {
             TreeNode node = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
+            controlType = (ControllerProperty)node.Tag;
+            setActive();
+
             Console.WriteLine(node);
-            Console.WriteLine(sender);
+            //Console.WriteLine(sender);
         }
 
         public Boolean isActive() { return pressed; }
         public Boolean isClicked() { return active; }
-        public void setActive(Boolean state) { pressed = state; }
+        public void setActive() { main.deactivateAll(); OnMouseDown(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); chooseButton_Click(this, new EventArgs()); OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); }
         public void activateButton() { if (!pressed) { OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); } }
         public void deactivateButton() { if (pressed) { OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); } }
     }

@@ -18,6 +18,8 @@ namespace NeroxUSBController
         public Color PassiveColor { get; set; }
         [Description("Toggle Switch Button Color"), Category("Switch Appearance"), DefaultValue(0), Browsable(true)]
         public Color ButtonColor { get; set; }
+        [Description("Toggle Switch Label"), Category("Switch Appearance"), DefaultValue(0), Browsable(true)]
+        public Label SwitchLabel { get; set; }
 
         private Boolean active = false;
         private Point activePoint;
@@ -26,12 +28,17 @@ namespace NeroxUSBController
         private Timer timer;
         private PointF buttonPosition;
         private StringFormat stringFormat = new StringFormat();
+        Main main;
 
         public ToggleSwitch()
         {
             SetTimer();
 
+            this.DoubleBuffered = true;
+
             this.Paint += ToggleSwitch_Paint;
+            this.Click += toggleSwitch_Click;
+
             this.passivePoint = new Point(0, 18);
             this.activePoint = new Point(0, 0);
             this.buttonPosition = passivePoint;
@@ -57,6 +64,31 @@ namespace NeroxUSBController
             e.Graphics.FillPath(brush, rRect);
             e.Graphics.FillEllipse(buttonBrush, buttonRectangle);
             e.Graphics.DrawString(this.Text, this.Font, brush, buttonTextRectangle, stringFormat);
+        }
+
+        internal void setToggleSwitch()
+        {
+            main = (Main)Parent.Parent;
+            main.ColorPickMouseDown(new MouseEventHandler(this.toggleSwitch_Click));
+        }
+
+        private void toggleSwitch_Click(object sender, EventArgs e)
+        {
+            // isActive gives previous status
+            if (this.isActive())
+            {
+                main.ActiveSelection = this;
+                if (sender is ColorPick)
+                {
+                    this.ActiveColor = main.ColorPickForeColor();
+                    this.Refresh();
+                }
+                else if (sender is ToggleSwitch)
+                {
+                    main.ColorPickForeColor(this.ActiveColor);
+                    main.pressedAny = false;
+                }
+            }
         }
 
         private void ToggleSwitch_ButtonTimer(object sender, EventArgs e)
@@ -206,5 +238,8 @@ namespace NeroxUSBController
 
         public Boolean isActive() { return active; }
         public void deactivateSwitch() { active = false; timer.Start(); this.Refresh(); }
+        public void ToggleSwitchText(String str) { SwitchLabel.Text = str; }
+        public String ToggleSwitchText() { return SwitchLabel.Text; }
+        public void RefreshLabel() { SwitchLabel.Refresh(); }
     }
 }

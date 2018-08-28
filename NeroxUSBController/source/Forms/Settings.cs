@@ -26,6 +26,8 @@ namespace NeroxUSBController
 
     public class SettingsSide : Panel
     {
+        private AppTreeView treeView;
+
         public SettingsSide()
         {
         }
@@ -36,6 +38,18 @@ namespace NeroxUSBController
             this.Size = sidePanel.Size;
             this.BackColor = sidePanel.BackColor;
             this.Visible = false;
+        }
+    }
+
+    internal class Account
+    {
+        private string username;
+        private string password;
+        private string accessToken;
+        private string token;
+        public Account()
+        {
+
         }
     }
 }

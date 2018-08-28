@@ -24,6 +24,7 @@ namespace NeroxUSBController
         private Main main;
         private Panel buttonPanel;
         private Panel propertyPanel;
+        private AppTreeView treeView;
         private Settings settingsPanel;
         private SettingsSide settingsSidePanel;
 
@@ -65,6 +66,7 @@ namespace NeroxUSBController
                 propertyPanel.Visible = settingsPanel.Visible;
                 settingsPanel.Visible = temp_visible;
                 settingsSidePanel.Visible = temp_visible;
+                treeView.Visible = !temp_visible;
             }
             this.Refresh();
         }
@@ -79,6 +81,7 @@ namespace NeroxUSBController
                 settingsPanel = (Settings)main.GetSettingsPanel();
                 settingsSidePanel = (SettingsSide)main.GetSettingsSidePanel();
                 settingsPanel.setPanel(buttonPanel, propertyPanel);
+                treeView = (AppTreeView)main.GettreeView();
             }
         }
     }
