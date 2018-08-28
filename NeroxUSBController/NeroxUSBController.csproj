@@ -304,6 +304,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TwitchInfo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\NeroxUSBController.exe.config" />
     <None Include="external\libobs\data\bicubic_scale.effect" />
     <None Include="external\libobs\data\bilinear_lowres_scale.effect" />
     <None Include="external\libobs\data\default.effect" />
@@ -377,6 +378,73 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\CloudrailSI.dll" />
+    <Content Include="bin\Debug\Hammock.ClientProfile.dll" />
+    <Content Include="bin\Debug\Hammock.ClientProfile.pdb" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.Binder.dll" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.Binder.xml" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.dll" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.xml" />
+    <Content Include="bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <Content Include="bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Logging.dll" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Logging.xml" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Options.dll" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Options.xml" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Primitives.dll" />
+    <Content Include="bin\Debug\Microsoft.Extensions.Primitives.xml" />
+    <Content Include="bin\Debug\NeroxUSBController.exe" />
+    <Content Include="bin\Debug\NeroxUSBController.pdb" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\obs-websocket-dotnet.dll" />
+    <Content Include="bin\Debug\obs-websocket-dotnet.xml" />
+    <Content Include="bin\Debug\OpenSSL.PrivateKeyDecoder.dll" />
+    <Content Include="bin\Debug\OpenSSL.PrivateKeyDecoder.xml" />
+    <Content Include="bin\Debug\OpenSSL.X509Certificate2.Provider.dll" />
+    <Content Include="bin\Debug\OpenSSL.X509Certificate2.Provider.xml" />
+    <Content Include="bin\Debug\Serilog.dll" />
+    <Content Include="bin\Debug\Serilog.Extensions.Logging.dll" />
+    <Content Include="bin\Debug\Serilog.Extensions.Logging.xml" />
+    <Content Include="bin\Debug\Serilog.pdb" />
+    <Content Include="bin\Debug\Serilog.xml" />
+    <Content Include="bin\Debug\SuperSocket.ClientEngine.dll" />
+    <Content Include="bin\Debug\System.Buffers.dll" />
+    <Content Include="bin\Debug\System.Buffers.xml" />
+    <Content Include="bin\Debug\System.Data.Common.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.Tracing.dll" />
+    <Content Include="bin\Debug\System.Globalization.Extensions.dll" />
+    <Content Include="bin\Debug\System.IO.Compression.dll" />
+    <Content Include="bin\Debug\System.Memory.dll" />
+    <Content Include="bin\Debug\System.Memory.xml" />
+    <Content Include="bin\Debug\System.Net.Http.dll" />
+    <Content Include="bin\Debug\System.Net.Sockets.dll" />
+    <Content Include="bin\Debug\System.Numerics.Vectors.dll" />
+    <Content Include="bin\Debug\System.Numerics.Vectors.xml" />
+    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="bin\Debug\System.Runtime.Serialization.Primitives.dll" />
+    <Content Include="bin\Debug\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="bin\Debug\System.Security.SecureString.dll" />
+    <Content Include="bin\Debug\System.Threading.Overlapped.dll" />
+    <Content Include="bin\Debug\System.Xml.XPath.XDocument.dll" />
+    <Content Include="bin\Debug\TweetSharp.dll" />
+    <Content Include="bin\Debug\TweetSharp.pdb" />
+    <Content Include="bin\Debug\TwitchLib.Api.dll" />
+    <Content Include="bin\Debug\TwitchLib.Api.Enums.dll" />
+    <Content Include="bin\Debug\TwitchLib.Api.Interfaces.dll" />
+    <Content Include="bin\Debug\TwitchLib.Api.Models.dll" />
+    <Content Include="bin\Debug\TwitchLib.Client.dll" />
+    <Content Include="bin\Debug\TwitchLib.Client.Enums.dll" />
+    <Content Include="bin\Debug\TwitchLib.Client.Models.dll" />
+    <Content Include="bin\Debug\TwitchLib.PubSub.dll" />
+    <Content Include="bin\Debug\websocket-sharp.dll" />
+    <Content Include="bin\Debug\websocket-sharp.xml" />
+    <Content Include="bin\Debug\WebSocket4Net.dll" />
     <Content Include="external\libobs\audio-monitoring\null\null-audio-monitoring.c" />
     <Content Include="external\libobs\audio-monitoring\osx\coreaudio-enum-devices.c" />
     <Content Include="external\libobs\audio-monitoring\osx\coreaudio-output.c" />
