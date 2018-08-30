@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BotAccessToken" xml:space="preserve">
-    <value>8ulgxmko3svskn050zd83xyrkx0dxk</value>
+    <value>token</value>
   </data>
   <data name="BotRefreshToken" xml:space="preserve">
-    <value>jgo1cs7q62vtuxwbera6velqooza6p7xc0dfz49k99fcqj1xrb</value>
+    <value>token</value>
   </data>
   <data name="BotUsername" xml:space="preserve">
-    <value>nerox_bot</value>
+    <value>bot</value>
   </data>
   <data name="ChannelName" xml:space="preserve">
-    <value>neroxx09</value>
+    <value>channek</value>
   </data>
 </root>
