@@ -124,11 +124,17 @@
   <data name="metal_setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\button\metal_setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pot_head" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\pot\pot_head.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="metal_esc_indicator" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\button\metal_esc_indicator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="metal_esc" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\button\metal_esc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hidetree" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\icon\hidetree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pot_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\pot\pot_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,10 +142,16 @@
   <data name="metal_gui_indicator" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\icon\metal_gui_indicator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pot_head" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\data\pot\pot_head.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="pot_head_indicator" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\pot\pot_head_indicator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="showtree" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\icon\showtree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="twitch_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\icon\twitch_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="twitter_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\icon\twitter_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -63,6 +63,16 @@ namespace NeroxUSBController.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hidetree {
+            get {
+                object obj = ResourceManager.GetObject("hidetree", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap metal_esc {
             get {
                 object obj = ResourceManager.GetObject("metal_esc", resourceCulture);
@@ -136,6 +146,36 @@ namespace NeroxUSBController.Properties {
         internal static System.Drawing.Bitmap pot_head_indicator {
             get {
                 object obj = ResourceManager.GetObject("pot_head_indicator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap showtree {
+            get {
+                object obj = ResourceManager.GetObject("showtree", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap twitch_logo {
+            get {
+                object obj = ResourceManager.GetObject("twitch_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap twitter_logo {
+            get {
+                object obj = ResourceManager.GetObject("twitter_logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -26,6 +26,8 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -57,11 +59,13 @@
     <Reference Include="Hammock.ClientProfile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
       <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.2.0-preview1-35029\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.2.0-preview1-35029\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
@@ -78,8 +82,9 @@
     <Reference Include="Microsoft.Extensions.Options, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Options.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Primitives, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0-preview1-35029\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\OBS.WebSocketInterface.3.0.0\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -92,6 +97,9 @@
     </Reference>
     <Reference Include="OpenSSL.X509Certificate2.Provider, Version=1.2.0.0, Culture=neutral, PublicKeyToken=78f5ba1b024431f9, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenSSL.X509Certificate2.Provider.1.2.0\lib\net45\OpenSSL.X509Certificate2.Provider.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.3.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.3.1\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.2.7.1\lib\net46\Serilog.dll</HintPath>
@@ -181,6 +189,7 @@
       <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -224,6 +233,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="source\Forms\TwitchConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="source\Graphics\ChooseButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -237,11 +250,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="source\Wrappers\Obs.cs" />
-    <Compile Include="source\Forms\Main.cs">
+    <Compile Include="source\Forms\NeroxController.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="source\Forms\Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="source\Forms\NeroxController.Designer.cs">
+      <DependentUpon>NeroxController.cs</DependentUpon>
     </Compile>
     <Compile Include="source\Property\Obs_Property.cs">
       <SubType>Component</SubType>
@@ -258,7 +271,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="source\Controllers\PropertyPanelController.cs" />
-    <Compile Include="source\Wrappers\SerialCom.cs" />
+    <Compile Include="source\Wrappers\USB.cs" />
     <Compile Include="source\Forms\Settings.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -287,8 +300,8 @@
     <Compile Include="source\Controllers\UserController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="source\Forms\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="source\Forms\NeroxController.resx">
+      <DependentUpon>NeroxController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -304,7 +317,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TwitchInfo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="bin\Debug\NeroxUSBController.exe.config" />
+    <EmbeddedResource Include="source\Forms\TwitchConnection.resx">
+      <DependentUpon>TwitchConnection.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="external\libobs\data\bicubic_scale.effect" />
     <None Include="external\libobs\data\bilinear_lowres_scale.effect" />
     <None Include="external\libobs\data\default.effect" />
@@ -378,73 +393,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\CloudrailSI.dll" />
-    <Content Include="bin\Debug\Hammock.ClientProfile.dll" />
-    <Content Include="bin\Debug\Hammock.ClientProfile.pdb" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.Binder.dll" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.Binder.xml" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.dll" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Configuration.xml" />
-    <Content Include="bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
-    <Content Include="bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Logging.dll" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Logging.xml" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Options.dll" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Options.xml" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Primitives.dll" />
-    <Content Include="bin\Debug\Microsoft.Extensions.Primitives.xml" />
-    <Content Include="bin\Debug\NeroxUSBController.exe" />
-    <Content Include="bin\Debug\NeroxUSBController.pdb" />
-    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
-    <Content Include="bin\Debug\obs-websocket-dotnet.dll" />
-    <Content Include="bin\Debug\obs-websocket-dotnet.xml" />
-    <Content Include="bin\Debug\OpenSSL.PrivateKeyDecoder.dll" />
-    <Content Include="bin\Debug\OpenSSL.PrivateKeyDecoder.xml" />
-    <Content Include="bin\Debug\OpenSSL.X509Certificate2.Provider.dll" />
-    <Content Include="bin\Debug\OpenSSL.X509Certificate2.Provider.xml" />
-    <Content Include="bin\Debug\Serilog.dll" />
-    <Content Include="bin\Debug\Serilog.Extensions.Logging.dll" />
-    <Content Include="bin\Debug\Serilog.Extensions.Logging.xml" />
-    <Content Include="bin\Debug\Serilog.pdb" />
-    <Content Include="bin\Debug\Serilog.xml" />
-    <Content Include="bin\Debug\SuperSocket.ClientEngine.dll" />
-    <Content Include="bin\Debug\System.Buffers.dll" />
-    <Content Include="bin\Debug\System.Buffers.xml" />
-    <Content Include="bin\Debug\System.Data.Common.dll" />
-    <Content Include="bin\Debug\System.Diagnostics.StackTrace.dll" />
-    <Content Include="bin\Debug\System.Diagnostics.Tracing.dll" />
-    <Content Include="bin\Debug\System.Globalization.Extensions.dll" />
-    <Content Include="bin\Debug\System.IO.Compression.dll" />
-    <Content Include="bin\Debug\System.Memory.dll" />
-    <Content Include="bin\Debug\System.Memory.xml" />
-    <Content Include="bin\Debug\System.Net.Http.dll" />
-    <Content Include="bin\Debug\System.Net.Sockets.dll" />
-    <Content Include="bin\Debug\System.Numerics.Vectors.dll" />
-    <Content Include="bin\Debug\System.Numerics.Vectors.xml" />
-    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.dll" />
-    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.xml" />
-    <Content Include="bin\Debug\System.Runtime.Serialization.Primitives.dll" />
-    <Content Include="bin\Debug\System.Security.Cryptography.Algorithms.dll" />
-    <Content Include="bin\Debug\System.Security.SecureString.dll" />
-    <Content Include="bin\Debug\System.Threading.Overlapped.dll" />
-    <Content Include="bin\Debug\System.Xml.XPath.XDocument.dll" />
-    <Content Include="bin\Debug\TweetSharp.dll" />
-    <Content Include="bin\Debug\TweetSharp.pdb" />
-    <Content Include="bin\Debug\TwitchLib.Api.dll" />
-    <Content Include="bin\Debug\TwitchLib.Api.Enums.dll" />
-    <Content Include="bin\Debug\TwitchLib.Api.Interfaces.dll" />
-    <Content Include="bin\Debug\TwitchLib.Api.Models.dll" />
-    <Content Include="bin\Debug\TwitchLib.Client.dll" />
-    <Content Include="bin\Debug\TwitchLib.Client.Enums.dll" />
-    <Content Include="bin\Debug\TwitchLib.Client.Models.dll" />
-    <Content Include="bin\Debug\TwitchLib.PubSub.dll" />
-    <Content Include="bin\Debug\websocket-sharp.dll" />
-    <Content Include="bin\Debug\websocket-sharp.xml" />
-    <Content Include="bin\Debug\WebSocket4Net.dll" />
+    <None Include="data\icon\hidetree.png" />
+    <None Include="data\icon\showtree.png" />
+    <None Include="data\icon\twitch_logo.png" />
+    <None Include="data\icon\twitter_logo.png" />
     <Content Include="external\libobs\audio-monitoring\null\null-audio-monitoring.c" />
     <Content Include="external\libobs\audio-monitoring\osx\coreaudio-enum-devices.c" />
     <Content Include="external\libobs\audio-monitoring\osx\coreaudio-output.c" />
@@ -626,6 +578,9 @@
     <Content Include="external\libobs\util\windows\win-registry.h" />
     <Content Include="external\libobs\util\windows\win-version.h" />
     <Content Include="external\libobs\util\windows\WinHandle.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

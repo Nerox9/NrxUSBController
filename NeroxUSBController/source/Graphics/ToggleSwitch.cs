@@ -68,7 +68,7 @@ namespace NeroxUSBController
 
         internal void setToggleSwitch()
         {
-            main = (Main)Parent.Parent;
+            main = (Main)Parent.Parent.Parent;
             main.ColorPickMouseDown(new MouseEventHandler(this.toggleSwitch_Click));
         }
 
@@ -119,7 +119,7 @@ namespace NeroxUSBController
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            Main main = (Main)Parent.Parent;
+            Main main = (Main)Parent.Parent.Parent;
             if (!active)
             {
                 main.deactivateAll();

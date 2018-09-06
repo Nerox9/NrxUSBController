@@ -22,6 +22,7 @@ namespace NeroxUSBController
             propertyPanelController = new PropertyPanelController(this, property_panel);
             treeView.Size = side_panel.Size;
             treeView.CreateTree();
+            settingTreeView.CreateTree();
             this.chooseButton0.setChooseButton();
             this.chooseButton1.setChooseButton();
             this.chooseButton2.setChooseButton();
@@ -69,12 +70,13 @@ namespace NeroxUSBController
             colorPick1.Refresh();
         }
 
-        public Panel GetButtonPanel() { return this.button_panel; }
-        public Panel GetPropertyPanel() { return this.property_panel; }
-        internal AppTreeView GettreeView() { return this.treeView; }
-        public Panel GetSettingsPanel() { return this.settings_panel; }
-        public Panel GetSettingsSidePanel() { return this.settingsSide_panel; }
-        //public Panel SetSendMessagePanel() { this.obs_panel.Visible = true; this.colorPick1.Visible = true; this.NameTextBox.Visible = true; this.property_panel_msg.Visible = false; return this.obs_panel; }
+        public Panel ButtonPanel { get { return this.button_panel; } }
+        public Panel PropertyPanel { get { return this.property_panel; } }
+        internal AppTreeView TreeView { get { return this.treeView; } }
+        public Panel SettingsPanel { get { return this.settings_panel; } }
+        public SettingTreeView SettingTreeView { get{ return settingTreeView; } }
+        public Panel SidePanel { get { return this.side_panel; } }
+        internal Panel accountsPanel { get { return this.accounts_panel; } }
         public void SetPropertyPanelController(object sender) { this.propertyPanelController.SetPropertyPanel(sender); }
 
     }    
