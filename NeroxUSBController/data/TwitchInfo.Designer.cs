@@ -61,16 +61,25 @@ namespace NeroxUSBController.data {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to kgcjz55987tpjhetm6ftxzsyr4x2g2.
+        ///   Looks up a localized string similar to token.
         /// </summary>
-        internal static string BotToken {
+        internal static string BotAccessToken {
             get {
-                return ResourceManager.GetString("BotToken", resourceCulture);
+                return ResourceManager.GetString("BotAccessToken", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to neroxbot.
+        ///   Looks up a localized string similar to token.
+        /// </summary>
+        internal static string BotRefreshToken {
+            get {
+                return ResourceManager.GetString("BotRefreshToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bot.
         /// </summary>
         internal static string BotUsername {
             get {
@@ -79,20 +88,11 @@ namespace NeroxUSBController.data {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to neroxx09.
+        ///   Looks up a localized string similar to channel.
         /// </summary>
         internal static string ChannelName {
             get {
                 return ResourceManager.GetString("ChannelName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 7t5mdlhwlj1crvgvxjgrclneco6eib.
-        /// </summary>
-        internal static string ClientID {
-            get {
-                return ResourceManager.GetString("ClientID", resourceCulture);
             }
         }
     }

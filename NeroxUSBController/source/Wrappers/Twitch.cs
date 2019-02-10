@@ -22,7 +22,11 @@ namespace NeroxUSBController
 
         public Twitch()
         {
-            credentials = new ConnectionCredentials(data.TwitchInfo.BotUsername, data.TwitchInfo.BotToken);
+            try
+            { credentials = new ConnectionCredentials(data.TwitchInfo.BotUsername, data.TwitchInfo.BotAccessToken); }
+            catch
+            { Console.WriteLine("Twitch Bot can not connected to Twitch."); }
+            
             client = new TwitchClient();
             bot = new TwitchBot(client);
 
@@ -33,8 +37,16 @@ namespace NeroxUSBController
 
         internal void Connect()
         {
-            client.Initialize(credentials, data.TwitchInfo.ChannelName);
-            client.Connect();
+            try
+            {
+                client.Initialize(credentials, data.TwitchInfo.ChannelName);
+                client.Connect();
+            }
+            
+            catch
+            {
+                Console.WriteLine("Twitch Bot can not connected to Twitch.");
+            }
         }
 
         internal void PlayAd(int duration)
@@ -87,7 +99,6 @@ namespace NeroxUSBController
             client.OnWhisperReceived += onWhisperReceived;
             client.OnNewSubscriber += onNewSubscriber;
             client.OnConnected += Client_OnConnected;
-            client.OnConnectionError += onConnectionError;
             //client.OnLog += onLog;
 
             
@@ -96,7 +107,7 @@ namespace NeroxUSBController
 
         internal void SendMessage(String message)
         {
-            client.SendMessage(client.JoinedChannels[0], message);
+            client.SendMessage(data.TwitchInfo.ChannelName, message);
         }
 
         internal void Disconnect()
@@ -108,11 +119,6 @@ namespace NeroxUSBController
         private void Client_OnConnected(object sender, OnConnectedArgs e)
         {
             Console.WriteLine($"Connected to {e.AutoJoinChannel}");
-        }
-
-        private void onConnectionError(object sender, OnConnectionErrorArgs e)
-        {
-            Console.WriteLine($"Connected to {e.Error}");
         }
 
         private void onLog(object sender, OnLogArgs e)

@@ -22,6 +22,7 @@ namespace NeroxUSBController
             Console.WriteLine(property_panel);
         }
 
+        /* Allows to change the property panel of which button active */
         public void SetPropertyPanel(object sender)
         {
             UserController button = (UserController)sender;
@@ -29,17 +30,21 @@ namespace NeroxUSBController
             if (button.controlType is null)
                 return;
 
-
+            /* Check that it is a controller property */
             if (button.controlType is ControllerProperty)
             {
-                Console.WriteLine(button.controlType);
-                
+                Console.WriteLine("Controller Type: " + button.controlType);
+
                 //twitch_Chat_Message.Activate();
 
 
             }
             else
+                return;
+
+            if (button.controlType is NeroxUSBController.Obs_Screen)
                 ;
+                //property_panel = obs_Property;
         }
     }
 }

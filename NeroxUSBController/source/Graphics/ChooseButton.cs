@@ -46,7 +46,7 @@ namespace NeroxUSBController
 
         internal void setChooseButton()
         {
-            main = (Main)Parent.Parent.Parent;
+            main = (Main)Parent.Parent;
             main.ColorPickMouseDown(new MouseEventHandler(this.chooseButton_Click));
         }
 

@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BotToken" xml:space="preserve">
-    <value>kgcjz55987tpjhetm6ftxzsyr4x2g2</value>
+  <data name="BotAccessToken" xml:space="preserve">
+    <value>token</value>
+  </data>
+  <data name="BotRefreshToken" xml:space="preserve">
+    <value>token</value>
   </data>
   <data name="BotUsername" xml:space="preserve">
-    <value>neroxbot</value>
+    <value>bot</value>
   </data>
   <data name="ChannelName" xml:space="preserve">
-    <value>neroxx09</value>
-  </data>
-  <data name="ClientID" xml:space="preserve">
-    <value>7t5mdlhwlj1crvgvxjgrclneco6eib</value>
+    <value>channel</value>
   </data>
 </root>
