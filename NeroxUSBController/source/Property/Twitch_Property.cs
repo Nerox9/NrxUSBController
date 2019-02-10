@@ -12,10 +12,12 @@ namespace NeroxUSBController
     {
         internal Twitch twitch;
         internal Account account;
+        internal Twitch_Panel panel;
 
         public Twitch_Property()
         {
-            //this.twitch = new Twitch();
+            this.twitch = new Twitch();
+            this.panel = new Twitch_Panel();
             //twitch_Chat_Message = new Twitch_Chat_Message(this.twitch);
             //twitch_Play_Ad = new Twitch_Play_Ad(this.twitch);
         }
@@ -23,12 +25,16 @@ namespace NeroxUSBController
 
     public class Twitch_Panel : Panel
     {
+        Message message;
         public Twitch_Panel()
         {
             this.Visible = false;
+            this.message = new Message();
+
+
         }
 
-        /*
+        
         class Message : TextBox
         {
             private Boolean firstChange = true;
@@ -49,7 +55,7 @@ namespace NeroxUSBController
 
             }
         }
-        */
+        
     }
 
     class Twitch_Chat_Message : Twitch_Property

@@ -236,6 +236,9 @@
     <Compile Include="source\Property\ControllerProperty.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="source\Property\Default_Property.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="source\Wrappers\Obs.cs" />
     <Compile Include="source\Forms\Main.cs">
       <SubType>Form</SubType>

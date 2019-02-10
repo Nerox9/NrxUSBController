@@ -19,6 +19,7 @@ namespace NeroxUSBController
         private StringFormat stringFormat = new StringFormat();
         private Color pushColor;
         private Color backColor;
+        private ColorPick colorPick;
         Main main;
 
         public override Cursor Cursor { get; set; } = Cursors.Hand;
@@ -47,7 +48,9 @@ namespace NeroxUSBController
         internal void setChooseButton()
         {
             main = (Main)Parent.Parent;
-            main.ColorPickMouseDown(new MouseEventHandler(this.chooseButton_Click));
+            this.colorPick = main.colorPick;
+            this.colorPick.pickMouseDown(new MouseEventHandler(this.chooseButton_Click));
+            
         }
 
         private void chooseButton_Paint(object sender, PaintEventArgs e)
@@ -84,9 +87,10 @@ namespace NeroxUSBController
             {
                 base.OnMouseUp(e);
                 base.BackColor = backColor;
-                main.resetColorPickForeColor();
+                this.colorPick.resetForecolor();
                 active = false;
                 pressed = false;
+                main.SetPropertyPanelController(this);
             }
         }
 
@@ -97,8 +101,8 @@ namespace NeroxUSBController
             {
                 if (sender is ColorPick)
                 {
-                    this.BackColor = main.ColorPickForeColor();
-                    this.ActiveColor = main.ColorPickForeColor();
+                    this.BackColor = this.colorPick.Forecolor();
+                    this.ActiveColor = this.colorPick.Forecolor();
                 }
             }
             else if (this.isClicked())
@@ -108,7 +112,7 @@ namespace NeroxUSBController
                     ChooseButton button = (ChooseButton)sender;
                     main.deactivateAll();
                     main.pressedAny = false;
-                    main.ColorPickForeColor(this.ActiveColor);
+                    this.colorPick.Forecolor(this.ActiveColor);
                 }
             }
         }

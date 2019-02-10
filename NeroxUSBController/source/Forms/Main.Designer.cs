@@ -30,17 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.side_panel = new System.Windows.Forms.Panel();
-            this.treeView = new NeroxUSBController.AppTreeView();
-            this.settingsSide_panel = new NeroxUSBController.SettingsSide();
             this.property_panel = new System.Windows.Forms.Panel();
-            this.NameTextBox = new NeroxUSBController.PropertyControlText();
-            this.colorPick1 = new NeroxUSBController.ColorPick();
-            this.property_panel_msg = new System.Windows.Forms.Label();
             this.button_panel = new System.Windows.Forms.Panel();
-            this.pot1 = new NeroxUSBController.Pot();
-            this.pot2 = new NeroxUSBController.Pot();
             this.switch_label2 = new System.Windows.Forms.Label();
             this.switch_label1 = new System.Windows.Forms.Label();
+            this.control_panel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pot1 = new NeroxUSBController.Pot();
+            this.pot2 = new NeroxUSBController.Pot();
             this.toggleSwitch2 = new NeroxUSBController.ToggleSwitch();
             this.toggleSwitch1 = new NeroxUSBController.ToggleSwitch();
             this.chooseButton5 = new NeroxUSBController.ChooseButton();
@@ -49,10 +46,10 @@
             this.chooseButton2 = new NeroxUSBController.ChooseButton();
             this.chooseButton1 = new NeroxUSBController.ChooseButton();
             this.chooseButton0 = new NeroxUSBController.ChooseButton();
-            this.control_panel = new System.Windows.Forms.Panel();
+            this.treeView = new NeroxUSBController.AppTreeView();
+            this.settingsSide_panel = new NeroxUSBController.SettingsSide();
             this.systemAppButton2 = new NeroxUSBController.SystemAppButton();
             this.systemAppButton1 = new NeroxUSBController.SystemAppButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.settings_panel = new NeroxUSBController.Settings();
             this.side_panel.SuspendLayout();
             this.property_panel.SuspendLayout();
@@ -71,82 +68,15 @@
             this.side_panel.Size = new System.Drawing.Size(293, 416);
             this.side_panel.TabIndex = 1;
             // 
-            // treeView
-            // 
-            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.treeView.ButtonImageHide = ((System.Drawing.Image)(resources.GetObject("treeView.ButtonImageHide")));
-            this.treeView.ButtonImageShow = ((System.Drawing.Image)(resources.GetObject("treeView.ButtonImageShow")));
-            this.treeView.ChildBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeView.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.treeView.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Name = "treeView";
-            this.treeView.ParentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.treeView.ShowLines = false;
-            this.treeView.ShowPlusMinus = false;
-            this.treeView.ShowRootLines = false;
-            this.treeView.Size = new System.Drawing.Size(293, 416);
-            this.treeView.TabIndex = 0;
-            this.treeView.TabStop = false;
-            this.treeView.Tag = "";
-            // 
-            // settingsSide_panel
-            // 
-            this.settingsSide_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.settingsSide_panel.Location = new System.Drawing.Point(0, 0);
-            this.settingsSide_panel.Name = "settingsSide_panel";
-            this.settingsSide_panel.Size = new System.Drawing.Size(293, 416);
-            this.settingsSide_panel.TabIndex = 1;
-            this.settingsSide_panel.Visible = false;
-            // 
             // property_panel
             // 
             this.property_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.property_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.property_panel.Controls.Add(this.NameTextBox);
-            this.property_panel.Controls.Add(this.colorPick1);
-            this.property_panel.Controls.Add(this.property_panel_msg);
             this.property_panel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.property_panel.Location = new System.Drawing.Point(0, 269);
             this.property_panel.Name = "property_panel";
             this.property_panel.Size = new System.Drawing.Size(507, 181);
             this.property_panel.TabIndex = 2;
-            // 
-            // NameTextBox
-            // 
-            this.NameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.NameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.NameTextBox.ForeColor = System.Drawing.Color.Maroon;
-            this.NameTextBox.Location = new System.Drawing.Point(33, 50);
-            this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.NameTextBox.TabIndex = 1;
-            this.NameTextBox.Visible = false;
-            // 
-            // colorPick1
-            // 
-            this.colorPick1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.colorPick1.buttonImage = ((System.Drawing.Image)(resources.GetObject("colorPick1.buttonImage")));
-            this.colorPick1.Location = new System.Drawing.Point(407, 50);
-            this.colorPick1.Name = "colorPick1";
-            this.colorPick1.Size = new System.Drawing.Size(75, 75);
-            this.colorPick1.TabIndex = 0;
-            this.colorPick1.Text = "colorPick1";
-            this.colorPick1.Visible = false;
-            // 
-            // property_panel_msg
-            // 
-            this.property_panel_msg.AutoSize = true;
-            this.property_panel_msg.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.property_panel_msg.ForeColor = System.Drawing.Color.Red;
-            this.property_panel_msg.Location = new System.Drawing.Point(50, 80);
-            this.property_panel_msg.Name = "property_panel_msg";
-            this.property_panel_msg.Size = new System.Drawing.Size(398, 24);
-            this.property_panel_msg.TabIndex = 0;
-            this.property_panel_msg.Text = "Drag an item or choose a switch, button or pot.";
             // 
             // button_panel
             // 
@@ -169,6 +99,53 @@
             this.button_panel.Name = "button_panel";
             this.button_panel.Size = new System.Drawing.Size(507, 235);
             this.button_panel.TabIndex = 3;
+            // 
+            // switch_label2
+            // 
+            this.switch_label2.ForeColor = System.Drawing.Color.Red;
+            this.switch_label2.Location = new System.Drawing.Point(412, 25);
+            this.switch_label2.Name = "switch_label2";
+            this.switch_label2.Size = new System.Drawing.Size(70, 13);
+            this.switch_label2.TabIndex = 9;
+            this.switch_label2.Text = "switch2";
+            this.switch_label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // switch_label1
+            // 
+            this.switch_label1.ForeColor = System.Drawing.Color.Red;
+            this.switch_label1.Location = new System.Drawing.Point(13, 25);
+            this.switch_label1.Name = "switch_label1";
+            this.switch_label1.Size = new System.Drawing.Size(70, 13);
+            this.switch_label1.TabIndex = 8;
+            this.switch_label1.Text = "switch1";
+            this.switch_label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // control_panel
+            // 
+            this.control_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.control_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.control_panel.Controls.Add(this.systemAppButton2);
+            this.control_panel.Controls.Add(this.systemAppButton1);
+            this.control_panel.Controls.Add(this.pictureBox1);
+            this.control_panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.control_panel.Location = new System.Drawing.Point(0, 0);
+            this.control_panel.Name = "control_panel";
+            this.control_panel.Size = new System.Drawing.Size(800, 34);
+            this.control_panel.TabIndex = 0;
+            this.control_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.control_panel_MouseDown);
+            this.control_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.control_panel_MouseMove);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(350, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // pot1
             // 
@@ -195,26 +172,6 @@
             this.pot2.Stator = global::NeroxUSBController.Properties.Resources.pot_base;
             this.pot2.TabIndex = 11;
             this.pot2.Text = "pot2";
-            // 
-            // switch_label2
-            // 
-            this.switch_label2.ForeColor = System.Drawing.Color.Red;
-            this.switch_label2.Location = new System.Drawing.Point(412, 25);
-            this.switch_label2.Name = "switch_label2";
-            this.switch_label2.Size = new System.Drawing.Size(70, 13);
-            this.switch_label2.TabIndex = 9;
-            this.switch_label2.Text = "switch2";
-            this.switch_label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // switch_label1
-            // 
-            this.switch_label1.ForeColor = System.Drawing.Color.Red;
-            this.switch_label1.Location = new System.Drawing.Point(13, 25);
-            this.switch_label1.Name = "switch_label1";
-            this.switch_label1.Size = new System.Drawing.Size(70, 13);
-            this.switch_label1.TabIndex = 8;
-            this.switch_label1.Text = "switch1";
-            this.switch_label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // toggleSwitch2
             // 
@@ -316,20 +273,35 @@
             this.chooseButton0.TabIndex = 0;
             this.chooseButton0.Text = "Button0";
             // 
-            // control_panel
+            // treeView
             // 
-            this.control_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.control_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.control_panel.Controls.Add(this.systemAppButton2);
-            this.control_panel.Controls.Add(this.systemAppButton1);
-            this.control_panel.Controls.Add(this.pictureBox1);
-            this.control_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.control_panel.Location = new System.Drawing.Point(0, 0);
-            this.control_panel.Name = "control_panel";
-            this.control_panel.Size = new System.Drawing.Size(800, 34);
-            this.control_panel.TabIndex = 0;
-            this.control_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.control_panel_MouseDown);
-            this.control_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.control_panel_MouseMove);
+            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.treeView.ButtonImageHide = ((System.Drawing.Image)(resources.GetObject("treeView.ButtonImageHide")));
+            this.treeView.ButtonImageShow = ((System.Drawing.Image)(resources.GetObject("treeView.ButtonImageShow")));
+            this.treeView.ChildBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeView.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.treeView.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.treeView.Location = new System.Drawing.Point(0, 0);
+            this.treeView.Name = "treeView";
+            this.treeView.ParentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.treeView.ShowLines = false;
+            this.treeView.ShowPlusMinus = false;
+            this.treeView.ShowRootLines = false;
+            this.treeView.Size = new System.Drawing.Size(293, 416);
+            this.treeView.TabIndex = 0;
+            this.treeView.TabStop = false;
+            this.treeView.Tag = "";
+            // 
+            // settingsSide_panel
+            // 
+            this.settingsSide_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.settingsSide_panel.Location = new System.Drawing.Point(0, 0);
+            this.settingsSide_panel.Name = "settingsSide_panel";
+            this.settingsSide_panel.Size = new System.Drawing.Size(293, 416);
+            this.settingsSide_panel.TabIndex = 1;
+            this.settingsSide_panel.Visible = false;
             // 
             // systemAppButton2
             // 
@@ -353,18 +325,6 @@
             this.systemAppButton1.Size = new System.Drawing.Size(22, 22);
             this.systemAppButton1.TabIndex = 3;
             this.systemAppButton1.Text = "systemAppButton1";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(350, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 27);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // settings_panel
             // 
@@ -411,7 +371,6 @@
         private ChooseButton chooseButton3;
         private ChooseButton chooseButton2;
         private ChooseButton chooseButton1;
-        private PropertyControlText NameTextBox;
         private ToggleSwitch toggleSwitch1;
         private ToggleSwitch toggleSwitch2;
         private System.Windows.Forms.Label switch_label2;
@@ -424,9 +383,8 @@
         private SettingsSide settingsSide_panel;
         private Pot pot2;
         private Pot pot1;
-        private ColorPick colorPick1;
-        private System.Windows.Forms.Label property_panel_msg;
         internal AppTreeView treeView;
+        private ColorPick colorPick1;
     }
 }
 

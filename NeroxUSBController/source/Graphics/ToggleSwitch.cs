@@ -21,6 +21,7 @@ namespace NeroxUSBController
         [Description("Toggle Switch Label"), Category("Switch Appearance"), DefaultValue(0), Browsable(true)]
         public Label SwitchLabel { get; set; }
 
+        private ColorPick colorPick; 
         private Boolean active = false;
         private Point activePoint;
         private Point passivePoint;
@@ -69,7 +70,8 @@ namespace NeroxUSBController
         internal void setToggleSwitch()
         {
             main = (Main)Parent.Parent;
-            main.ColorPickMouseDown(new MouseEventHandler(this.toggleSwitch_Click));
+            this.colorPick = main.colorPick;
+            this.colorPick.pickMouseDown(new MouseEventHandler(this.toggleSwitch_Click));
         }
 
         private void toggleSwitch_Click(object sender, EventArgs e)
@@ -80,12 +82,12 @@ namespace NeroxUSBController
                 main.ActiveSelection = this;
                 if (sender is ColorPick)
                 {
-                    this.ActiveColor = main.ColorPickForeColor();
+                    this.ActiveColor = this.colorPick.Forecolor();
                     this.Refresh();
                 }
                 else if (sender is ToggleSwitch)
                 {
-                    main.ColorPickForeColor(this.ActiveColor);
+                    this.colorPick.Forecolor(this.ActiveColor);
                     main.pressedAny = false;
                 }
             }
@@ -130,7 +132,7 @@ namespace NeroxUSBController
             else
             {
                 if (!main.pressedAny)
-                    main.colorPickReset();
+                    this.colorPick.colorPickReset();
                 active = false;
                 timer.Start();
             }

@@ -11,15 +11,21 @@ namespace NeroxUSBController
         private Point lastPoint;
         internal PropertyPanelController propertyPanelController;
         internal Twitch twitch = new Twitch();
-        internal Twitter twitter = new Twitter(); 
+        internal Twitter twitter = new Twitter();
         //private SerialCom serialCom = new SerialCom();
+
+        public ColorPick colorPick;
 
         public Main()
         {
-            InitializeComponent();
-            
-
             propertyPanelController = new PropertyPanelController(this, property_panel);
+            this.colorPick = propertyPanelController.default_Property.ColorPicker;
+
+            InitializeComponent();
+
+            propertyPanelController.SetControllers(property_panel);
+
+
             treeView.Size = side_panel.Size;
             treeView.CreateTree();
             this.chooseButton0.setChooseButton();
@@ -46,11 +52,6 @@ namespace NeroxUSBController
             }
         }
 
-        public Color ColorPickForeColor() { return colorPick1.ForeColor; }
-        public void ColorPickForeColor(Color color) { colorPick1.ForeColor = color; }
-        public void resetColorPickForeColor() { colorPick1.ForeColor = colorPick1.Parent.BackColor; }
-        public void ColorPickMouseDown(MouseEventHandler mouseEventHandler) { this.colorPick1.MouseDown += mouseEventHandler; }
-
         public void deactivateAll()
         {
             chooseButton0.deactivateButton();
@@ -63,12 +64,9 @@ namespace NeroxUSBController
             toggleSwitch2.deactivateSwitch();
         }
 
-        public void colorPickReset()
-        {
-            colorPick1.ForeColor = colorPick1.Parent.BackColor;
-            colorPick1.Refresh();
-        }
+        
 
+        /* Get Panels */
         public Panel GetButtonPanel() { return this.button_panel; }
         public Panel GetPropertyPanel() { return this.property_panel; }
         internal AppTreeView GettreeView() { return this.treeView; }

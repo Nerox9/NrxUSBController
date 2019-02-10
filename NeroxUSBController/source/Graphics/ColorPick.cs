@@ -12,7 +12,7 @@ using System.ComponentModel;
 
 namespace NeroxUSBController
 {
-    class ColorPick : Control
+    public class ColorPick : Control
     {
         ColorDialog colorDialog = new ColorDialog();
         [Description("Button Edge Image"), Category("Appearance"), DefaultValue(0), Browsable(true)]
@@ -76,5 +76,16 @@ namespace NeroxUSBController
             Color lighter_color = Color.FromArgb(r, g, b);
             return lighter_color;
         }
+
+        public void colorPickReset()
+        {
+            this.ForeColor = this.Parent.BackColor;
+            this.Refresh();
+        }
+
+        public Color Forecolor() { return this.ForeColor; }
+        public void Forecolor(Color color) { this.ForeColor = color; }
+        public void resetForecolor() { this.ForeColor = Color.DimGray; }
+        public void pickMouseDown(MouseEventHandler mouseEventHandler) { this.MouseDown += mouseEventHandler; }
     }
 }
