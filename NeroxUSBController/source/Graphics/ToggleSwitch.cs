@@ -71,7 +71,7 @@ namespace NeroxUSBController
         {
             main = (Main)Parent.Parent;
             this.colorPick = main.colorPick;
-            this.colorPick.pickMouseDown(new MouseEventHandler(this.toggleSwitch_Click));
+            //this.colorPick.pickMouseDown(new MouseEventHandler(this.toggleSwitch_Click));
         }
 
         private void toggleSwitch_Click(object sender, EventArgs e)
@@ -87,7 +87,7 @@ namespace NeroxUSBController
                 }
                 else if (sender is ToggleSwitch)
                 {
-                    this.colorPick.Forecolor(this.ActiveColor);
+                    //this.colorPick.Forecolor(this.ActiveColor);
                     main.pressedAny = false;
                 }
             }
@@ -132,7 +132,7 @@ namespace NeroxUSBController
             else
             {
                 if (!main.pressedAny)
-                    this.colorPick.colorPickReset();
+                    //this.colorPick.colorPickReset();
                 active = false;
                 timer.Start();
             }

@@ -9,6 +9,6 @@ namespace NeroxUSBController
 {
     class UserController : Control
     {
-        public ControllerProperty controlType;
+        public Property controlType;
     }
 }

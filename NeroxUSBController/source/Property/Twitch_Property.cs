@@ -8,13 +8,13 @@ using System.ComponentModel;
 
 namespace NeroxUSBController
 {
-    public class Twitch_Property : ControllerProperty
+    /*public class Twitch_Property : Property
     {
         internal Twitch twitch;
         internal Account account;
         internal Twitch_Panel panel;
 
-        public Twitch_Property()
+        public Twitch_Property(Panel propertyPanel)
         {
             this.twitch = new Twitch();
             this.panel = new Twitch_Panel();
@@ -124,5 +124,5 @@ namespace NeroxUSBController
             active = !active;
             this.twitch.SubChat(active);
         }
-    }
+    }*/
 }

@@ -94,9 +94,10 @@ namespace NeroxUSBController
         {
             Main main = (Main)Parent.Parent;
 
-            Obs_Screen obs_Screen_Switch = new Obs_Screen();
+            //Obs_Screen obs_Screen_Switch = new Obs_Screen();
 
             Twitch twitch = main.twitch;
+            /*
             Twitch_Chat_Message twitch_Chat_Message = new Twitch_Chat_Message();
             Twitch_Play_Ad twitch_Play_Ad = new Twitch_Play_Ad();
             Twitch_Slow_Chat twitch_Slow_Chat = new Twitch_Slow_Chat();
@@ -116,7 +117,7 @@ namespace NeroxUSBController
             childNode("Play Ad", "playAd", twitch_Play_Ad, Twitch_Node);
             childNode("Slow Chat", "slowChat", twitch_Slow_Chat, Twitch_Node);
             childNode("Sub Chat", "subChat", twitch_Slow_Chat, Twitch_Node);
-
+            */
 
             TreeNode parentNode(string text, string name)
             {

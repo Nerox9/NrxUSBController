@@ -18,24 +18,26 @@ namespace NeroxUSBController
 
         public Main()
         {
-            propertyPanelController = new PropertyPanelController(this, property_panel);
-            this.colorPick = propertyPanelController.default_Property.ColorPicker;
+            
+            //this.colorPick = propertyPanelController.default_Property.ColorPicker;
 
             InitializeComponent();
+            propertyPanelController = new PropertyPanelController(this, property_panel);
+            //propertyPanelController.SetControllers(property_panel);
 
-            propertyPanelController.SetControllers(property_panel);
-
-
+            /*
             treeView.Size = side_panel.Size;
             treeView.CreateTree();
-            this.chooseButton0.setChooseButton();
-            this.chooseButton1.setChooseButton();
-            this.chooseButton2.setChooseButton();
-            this.chooseButton3.setChooseButton();
-            this.chooseButton4.setChooseButton();
-            this.chooseButton5.setChooseButton();
-            this.toggleSwitch1.setToggleSwitch();
-            this.toggleSwitch2.setToggleSwitch();
+            */
+            button_panel.chooseButton0.setChooseButton();
+            button_panel.chooseButton1.setChooseButton();
+            button_panel.chooseButton2.setChooseButton();
+            button_panel.chooseButton3.setChooseButton();
+            button_panel.chooseButton4.setChooseButton();
+            button_panel.chooseButton5.setChooseButton();
+            button_panel.toggleSwitch1.setToggleSwitch();
+            button_panel.toggleSwitch2.setToggleSwitch();
+            
         }
 
         private void control_panel_MouseDown(object sender, MouseEventArgs e)
@@ -54,14 +56,14 @@ namespace NeroxUSBController
 
         public void deactivateAll()
         {
-            chooseButton0.deactivateButton();
-            chooseButton1.deactivateButton();
-            chooseButton2.deactivateButton();
-            chooseButton3.deactivateButton();
-            chooseButton4.deactivateButton();
-            chooseButton5.deactivateButton();
-            toggleSwitch1.deactivateSwitch();
-            toggleSwitch2.deactivateSwitch();
+            button_panel.chooseButton0.deactivateButton();
+            button_panel.chooseButton1.deactivateButton();
+            button_panel.chooseButton2.deactivateButton();
+            button_panel.chooseButton3.deactivateButton();
+            button_panel.chooseButton4.deactivateButton();
+            button_panel.chooseButton5.deactivateButton();
+            button_panel.toggleSwitch1.deactivateSwitch();
+            button_panel.toggleSwitch2.deactivateSwitch();
         }
 
         
@@ -69,7 +71,7 @@ namespace NeroxUSBController
         /* Get Panels */
         public Panel GetButtonPanel() { return this.button_panel; }
         public Panel GetPropertyPanel() { return this.property_panel; }
-        internal AppTreeView GettreeView() { return this.treeView; }
+        internal AppTreeView GettreeView() { return this.side_panel.treeView; }
         public Panel GetSettingsPanel() { return this.settings_panel; }
         public Panel GetSettingsSidePanel() { return this.settingsSide_panel; }
         //public Panel SetSendMessagePanel() { this.obs_panel.Visible = true; this.colorPick1.Visible = true; this.NameTextBox.Visible = true; this.property_panel_msg.Visible = false; return this.obs_panel; }

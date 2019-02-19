@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace NeroxUSBController
 {
-    public class Twitter_Property : ControllerProperty
+    /*
+    public class Twitter_Property : Property
     {
         
         internal Twitter twitter;
         internal Account account;
 
+        
         public Twitter_Property()
         {
         }
+        
     }
+    */
 }

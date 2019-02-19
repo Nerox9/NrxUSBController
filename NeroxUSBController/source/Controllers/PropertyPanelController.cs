@@ -12,16 +12,15 @@ namespace NeroxUSBController
         private Panel property_panel;
         private Panel active_panel;
         private Main main;
-        //internal Obs_Property obs_Property = new Obs_Property();
-        //internal Twitch_Property twitch_Property = new Twitch_Property();
-        internal Default_Property default_Property;
+
+        private Default_Property default_Property;
 
         private Label property_panel_msg;
 
-        public PropertyPanelController(Main main_panel, Panel panel)
+        public PropertyPanelController(Main main_panel, Panel property_panel)
         {
             main = main_panel;
-            property_panel = panel;
+            //property_panel = panel;
             Console.WriteLine(property_panel);
 
             // 
@@ -36,9 +35,10 @@ namespace NeroxUSBController
             this.property_panel_msg.Size = new System.Drawing.Size(303, 17);
             this.property_panel_msg.TabIndex = 0;
             this.property_panel_msg.Text = "Drag an item or choose a switch, button or pot.";
-            this.property_panel_msg.Visible = false;
+            this.property_panel_msg.Visible = true;
 
-            default_Property = new Default_Property();
+            default_Property = new Default_Property(property_panel);
+
         }
 
         /* Allows to change the property panel of which button active */
@@ -48,16 +48,17 @@ namespace NeroxUSBController
 
             /* Default Property */
             if (button.controlType is null)
-                default_Property.Switch(); //TODO: fix the fast button activity bug
+                //default_Property.Activate(); //TODO: fix the fast button activity bug
 
             /* Check that it is a controller property */
-            if (button.controlType is ControllerProperty)
+            if (button.controlType is Property)
             {
                 Console.WriteLine("Controller Type: " + button.controlType);
             }
             else
                 return;
 
+            /*
             if (button.controlType is Obs_Screen)
             {
                 // open obs property
@@ -67,6 +68,7 @@ namespace NeroxUSBController
             {
                 // open twitch property
             }
+            */
         }
 
 
@@ -74,7 +76,15 @@ namespace NeroxUSBController
         public void SetControllers(Panel property_panel)
         {
             property_panel.Controls.Add(property_panel_msg);
-            this.default_Property.SetControllers(property_panel);
+            //this.default_Property.SetControllers(property_panel);
+        }
+
+        public class Default_Property : Property
+        {
+            public Default_Property(Panel propertyPanel) : base(propertyPanel)
+            {
+                
+            }
         }
     }
 }

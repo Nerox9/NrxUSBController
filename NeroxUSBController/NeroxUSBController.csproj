@@ -233,12 +233,13 @@
     <Compile Include="source\Graphics\ColorWheel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="source\Property\ControllerProperty.cs">
+    <Compile Include="source\Panels\ButtonPanel.Designer.cs" />
+    <Compile Include="source\Panels\PropertyPanel.Designer.cs" />
+    <Compile Include="source\Panels\SidePanel.Designer.cs" />
+    <Compile Include="source\Property\Property.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="source\Property\Default_Property.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="source\Property\Default_Property.cs" />
     <Compile Include="source\Wrappers\Obs.cs" />
     <Compile Include="source\Forms\Main.cs">
       <SubType>Form</SubType>
@@ -246,9 +247,7 @@
     <Compile Include="source\Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\Property\Obs_Property.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="source\Property\Obs_Property.cs" />
     <Compile Include="source\Graphics\Pot.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -280,13 +279,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TwitchInfo.resx</DependentUpon>
     </Compile>
-    <Compile Include="source\Property\Twitch_Property.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="source\Property\Twitch_Property.cs" />
     <Compile Include="source\Wrappers\Twitter.cs" />
-    <Compile Include="source\Property\Twitter_Property.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="source\Property\Twitter_Property.cs" />
     <Compile Include="source\Controllers\UserController.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -8,7 +8,8 @@ using System.ComponentModel;
 
 namespace NeroxUSBController
 {
-    class Obs_Property : ControllerProperty
+    /*
+    class Obs_Property : Property
     {
         internal Obs obs;
         
@@ -36,4 +37,5 @@ namespace NeroxUSBController
             
         }
     }
+    */
 }

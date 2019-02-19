@@ -49,7 +49,7 @@ namespace NeroxUSBController
         {
             main = (Main)Parent.Parent;
             this.colorPick = main.colorPick;
-            this.colorPick.pickMouseDown(new MouseEventHandler(this.chooseButton_Click));
+            //this.colorPick.pickMouseDown(new MouseEventHandler(this.chooseButton_Click));
             
         }
 
@@ -87,7 +87,7 @@ namespace NeroxUSBController
             {
                 base.OnMouseUp(e);
                 base.BackColor = backColor;
-                this.colorPick.resetForecolor();
+                //this.colorPick.resetForecolor();
                 active = false;
                 pressed = false;
                 main.SetPropertyPanelController(this);
@@ -112,7 +112,7 @@ namespace NeroxUSBController
                     ChooseButton button = (ChooseButton)sender;
                     main.deactivateAll();
                     main.pressedAny = false;
-                    this.colorPick.Forecolor(this.ActiveColor);
+                    //this.colorPick.Forecolor(this.ActiveColor);
                 }
             }
         }
@@ -125,7 +125,7 @@ namespace NeroxUSBController
         private void chooseButton_DragDrop(object sender, DragEventArgs e)
         {
             TreeNode node = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
-            controlType = (ControllerProperty)node.Tag;
+            controlType = (Property)node.Tag;
             setActive();
 
             Console.WriteLine(node);
