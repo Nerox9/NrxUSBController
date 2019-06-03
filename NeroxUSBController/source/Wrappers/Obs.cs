@@ -66,5 +66,10 @@ namespace NeroxUSBController
         private void onStreamData(OBSWebsocket sender, StreamStatus data)
         { }
 
+        public void screenSwitch()
+        {
+
+        }
+
     }
 }

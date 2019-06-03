@@ -63,6 +63,26 @@ namespace NeroxUSBController.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ButtonImageHide {
+            get {
+                object obj = ResourceManager.GetObject("ButtonImageHide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonImageShow {
+            get {
+                object obj = ResourceManager.GetObject("ButtonImageShow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap metal_esc {
             get {
                 object obj = ResourceManager.GetObject("metal_esc", resourceCulture);

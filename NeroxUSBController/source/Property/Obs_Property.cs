@@ -8,11 +8,11 @@ using System.ComponentModel;
 
 namespace NeroxUSBController
 {
-    /*
+    
     class Obs_Property : Property
     {
         internal Obs obs;
-        
+
         public Obs_Property()
         {
             //this.Visible = false;
@@ -24,10 +24,11 @@ namespace NeroxUSBController
 
         }
     }
+    
 
-    class Obs_Screen : Obs_Property
+    class obs_SwitchScreen : Obs_Property
     {
-        public Obs_Screen()
+        public obs_SwitchScreen()
         {
             
         }
@@ -37,5 +38,5 @@ namespace NeroxUSBController
             
         }
     }
-    */
+    
 }

@@ -29,7 +29,7 @@ namespace NeroxUSBController
         private Timer timer;
         private PointF buttonPosition;
         private StringFormat stringFormat = new StringFormat();
-        Main main;
+        source.Panels.MainControl main;
 
         public ToggleSwitch()
         {
@@ -67,11 +67,11 @@ namespace NeroxUSBController
             e.Graphics.DrawString(this.Text, this.Font, brush, buttonTextRectangle, stringFormat);
         }
 
-        internal void setToggleSwitch()
+        internal void setToggleSwitch(ColorPick colorPicker)
         {
-            main = (Main)Parent.Parent;
-            this.colorPick = main.colorPick;
-            //this.colorPick.pickMouseDown(new MouseEventHandler(this.toggleSwitch_Click));
+            main = (source.Panels.MainControl)Parent.Parent.Parent;
+            this.colorPick = colorPicker;
+            this.colorPick.pickMouseDown(new MouseEventHandler(this.toggleSwitch_Click));
         }
 
         private void toggleSwitch_Click(object sender, EventArgs e)
@@ -121,10 +121,11 @@ namespace NeroxUSBController
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            Main main = (Main)Parent.Parent;
+            source.Panels.ButtonControl buttonControl = (source.Panels.ButtonControl)Parent.Parent;
+            source.Panels.MainControl main = (source.Panels.MainControl)Parent.Parent.Parent;
             if (!active)
             {
-                main.deactivateAll();
+                buttonControl.deactivateAll();
                 active = true;
                 main.pressedAny = true;
                 timer.Start();

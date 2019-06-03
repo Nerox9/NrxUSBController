@@ -20,7 +20,8 @@ namespace NeroxUSBController
         private Color pushColor;
         private Color backColor;
         private ColorPick colorPick;
-        Main main;
+        source.Panels.MainControl main;
+        source.Panels.ButtonControl buttonControl;
 
         public override Cursor Cursor { get; set; } = Cursors.Hand;
         [Description("Sets the Border Thickness"), Category("Appearance"), DefaultValue(3), Browsable(true)]
@@ -45,11 +46,12 @@ namespace NeroxUSBController
             this.Click += chooseButton_Click;
         }
 
-        internal void setChooseButton()
+        internal void setChooseButton(ColorPick colorPicker)
         {
-            main = (Main)Parent.Parent;
-            this.colorPick = main.colorPick;
-            //this.colorPick.pickMouseDown(new MouseEventHandler(this.chooseButton_Click));
+            main = (source.Panels.MainControl)Parent.Parent.Parent;
+            buttonControl = (source.Panels.ButtonControl)Parent.Parent;
+            this.colorPick = colorPicker;
+            this.colorPick.pickMouseDown(new MouseEventHandler(this.chooseButton_Click));
             
         }
 
@@ -87,7 +89,7 @@ namespace NeroxUSBController
             {
                 base.OnMouseUp(e);
                 base.BackColor = backColor;
-                //this.colorPick.resetForecolor();
+                this.colorPick.resetForecolor();
                 active = false;
                 pressed = false;
                 main.SetPropertyPanelController(this);
@@ -110,9 +112,9 @@ namespace NeroxUSBController
                 if (sender is ChooseButton)
                 {
                     ChooseButton button = (ChooseButton)sender;
-                    main.deactivateAll();
+                    buttonControl.deactivateAll();
                     main.pressedAny = false;
-                    //this.colorPick.Forecolor(this.ActiveColor);
+                    this.colorPick.Forecolor(this.ActiveColor);
                 }
             }
         }
@@ -134,7 +136,7 @@ namespace NeroxUSBController
 
         public Boolean isActive() { return pressed; }
         public Boolean isClicked() { return active; }
-        public void setActive() { main.deactivateAll(); OnMouseDown(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); chooseButton_Click(this, new EventArgs()); OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); }
+        public void setActive() { buttonControl.deactivateAll(); OnMouseDown(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); chooseButton_Click(this, new EventArgs()); OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); }
         public void activateButton() { if (!pressed) { OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); } }
         public void deactivateButton() { if (pressed) { OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); } }
     }

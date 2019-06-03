@@ -7,10 +7,8 @@ using System.Windows.Forms;
 
 namespace NeroxUSBController
 {
-    class PropertyPanel : Panel
+    public class PropertyPanel : Panel
     {
-        internal object chooseButton0;
-
         public PropertyPanel()
         {
             // 

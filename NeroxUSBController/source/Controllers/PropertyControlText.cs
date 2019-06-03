@@ -17,7 +17,7 @@ namespace NeroxUSBController
 
         public void NameTextBox_TextChanged(object sender, EventArgs e)
         {
-            Main main = (Main)Parent.Parent;
+            source.Panels.MainControl main = (source.Panels.MainControl)Parent.Parent.Parent;
 
             if (main.ActiveSelection is ChooseButton)
             {
@@ -43,7 +43,7 @@ namespace NeroxUSBController
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                Main main = (Main)Parent.Parent;
+                source.Panels.MainControl main = (source.Panels.MainControl)Parent.Parent.Parent;
                 if (main.ActiveSelection is ChooseButton)
                 {
                     ChooseButton button = (ChooseButton)main.ActiveSelection;

@@ -21,14 +21,16 @@ namespace NeroxUSBController
         [Description("Button Show Node Image"), Category("Appearance"), DefaultValue(0), Browsable(true)]
         public Image ButtonImageShow { get; set; }
 
+        internal obs_SwitchScreen OBS_SwitchScreen;
+
 
         public AppTreeView()
         {
             DrawMode = TreeViewDrawMode.OwnerDrawAll;
             this.ItemDrag += new ItemDragEventHandler(this.treeView_ItemDrag);
-            this.MouseDown += new MouseEventHandler(this.treeView_MouseSingleClick);
+            this.MouseUp += new MouseEventHandler(this.treeView_MouseSingleClick);
         }
-
+        
         protected override void OnDrawNode(DrawTreeNodeEventArgs e)
         {
             Boolean isParent = e.Node.Parent == null;
@@ -50,7 +52,7 @@ namespace NeroxUSBController
             if ((e.State & TreeNodeStates.Selected) != 0)
                 ControlPaint.DrawFocusRectangle(e.Graphics, new Rectangle(0, e.Bounds.Top, ClientSize.Width, e.Bounds.Height));
         }
-
+        
         private Image GetIcon(Boolean isExpanded)
         {
             if (isExpanded)
@@ -69,21 +71,32 @@ namespace NeroxUSBController
 
         private void treeView_MouseSingleClick(object sender, MouseEventArgs e)
         {
+
             switch (e.Button)
             {
                 // Toggle the TreeNode under the mouse cursor 
                 // if the left mouse button was clicked. 
                 case MouseButtons.Left:
-                    this.GetNodeAt(e.X, e.Y).Toggle();
+                    Console.WriteLine("Single Left Click");
+                    try
+                    { this.GetNodeAt(e.X, e.Y).Toggle(); }
+                    catch(NullReferenceException)
+                    { Console.WriteLine("Null Get Node"); }
+                    catch (Exception)
+                    { Console.WriteLine("Unkown node single click error!"); }
+                    break;
+                default:
+                    Console.WriteLine("Non-left click");
                     break;
             }
         }
 
         public void treeView_ItemDrag(object sender, ItemDragEventArgs e)
         {
+            Console.WriteLine("Drag an item");
             TreeNode item = (TreeNode)e.Item;
             Boolean isParent = item.Parent == null;
-           // Console.WriteLine(item.Name);
+            Console.WriteLine(item.Name);
 
             if (!isParent)
                 DoDragDrop(e.Item, DragDropEffects.Move);
@@ -92,11 +105,13 @@ namespace NeroxUSBController
 
         public void CreateTree()
         {
-            Main main = (Main)Parent.Parent;
+            this.Visible = true;
 
-            //Obs_Screen obs_Screen_Switch = new Obs_Screen();
-
-            Twitch twitch = main.twitch;
+            Obs obs = new Obs();
+            TreeNode OBS_Node = parentNode("OBS", "obs");
+            OBS_SwitchScreen = new obs_SwitchScreen();
+            childNode("Screen Switch", "screenSwitch", OBS_SwitchScreen, OBS_Node);
+            //Twitch twitch = main.twitch;
             /*
             Twitch_Chat_Message twitch_Chat_Message = new Twitch_Chat_Message();
             Twitch_Play_Ad twitch_Play_Ad = new Twitch_Play_Ad();

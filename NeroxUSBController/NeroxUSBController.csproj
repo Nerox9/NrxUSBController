@@ -93,6 +93,8 @@
     <Reference Include="OpenSSL.X509Certificate2.Provider, Version=1.2.0.0, Culture=neutral, PublicKeyToken=78f5ba1b024431f9, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenSSL.X509Certificate2.Provider.1.2.0\lib\net45\OpenSSL.X509Certificate2.Provider.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.2.7.1\lib\net46\Serilog.dll</HintPath>
     </Reference>
@@ -181,6 +183,7 @@
       <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -222,6 +225,7 @@
     <Reference Include="WebSocket4Net, Version=0.15.2.11, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
       <HintPath>..\packages\WebSocket4Net.0.15.2\lib\net45\WebSocket4Net.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="source\Graphics\ChooseButton.cs">
@@ -234,12 +238,38 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="source\Panels\ButtonPanel.Designer.cs" />
+    <Compile Include="source\Panels\User Controls\ButtonControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Panels\User Controls\ButtonControl.Designer.cs">
+      <DependentUpon>ButtonControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="source\Panels\User Controls\MainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Panels\User Controls\MainControl.Designer.cs">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="source\Panels\PropertyPanel.Designer.cs" />
     <Compile Include="source\Panels\SidePanel.Designer.cs" />
+    <Compile Include="source\Panels\User Controls\PropertyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Panels\User Controls\PropertyControl.Designer.cs">
+      <DependentUpon>PropertyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="source\Panels\User Controls\TreeViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Panels\User Controls\TreeViewControl.Designer.cs">
+      <DependentUpon>TreeViewControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="source\Property\Property.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="source\Property\Default_Property.cs" />
+    <Compile Include="source\Property\Default_Property.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="source\Wrappers\Obs.cs" />
     <Compile Include="source\Forms\Main.cs">
       <SubType>Form</SubType>
@@ -247,7 +277,9 @@
     <Compile Include="source\Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\Property\Obs_Property.cs" />
+    <Compile Include="source\Property\Obs_Property.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="source\Graphics\Pot.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -301,6 +333,18 @@
     <EmbeddedResource Include="data\TwitchInfo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TwitchInfo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Panels\User Controls\ButtonControl.resx">
+      <DependentUpon>ButtonControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Panels\User Controls\MainControl.resx">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Panels\User Controls\PropertyControl.resx">
+      <DependentUpon>PropertyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Panels\User Controls\TreeViewControl.resx">
+      <DependentUpon>TreeViewControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\NeroxUSBController.exe.config" />
     <None Include="external\libobs\data\bicubic_scale.effect" />
@@ -443,6 +487,8 @@
     <Content Include="bin\Debug\websocket-sharp.dll" />
     <Content Include="bin\Debug\websocket-sharp.xml" />
     <Content Include="bin\Debug\WebSocket4Net.dll" />
+    <None Include="data\icon\showtree.png" />
+    <None Include="data\icon\hidetree.png" />
     <Content Include="external\libobs\audio-monitoring\null\null-audio-monitoring.c" />
     <Content Include="external\libobs\audio-monitoring\osx\coreaudio-enum-devices.c" />
     <Content Include="external\libobs\audio-monitoring\osx\coreaudio-output.c" />
