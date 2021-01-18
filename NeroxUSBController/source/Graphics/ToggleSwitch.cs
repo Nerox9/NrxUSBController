@@ -7,10 +7,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using NeroxUSBController.source.Manager;
 
 namespace NeroxUSBController
 {
-    class ToggleSwitch : Control
+    public class ToggleSwitch : UserController
     {
         [Description("Toggle Switch Active Background Color"), Category("Switch Appearance"), DefaultValue(0), Browsable(true)]
         public Color ActiveColor { get; set; }
@@ -21,7 +22,7 @@ namespace NeroxUSBController
         [Description("Toggle Switch Label"), Category("Switch Appearance"), DefaultValue(0), Browsable(true)]
         public Label SwitchLabel { get; set; }
 
-        private ColorPick colorPick; 
+
         private Boolean active = false;
         private Point activePoint;
         private Point passivePoint;
@@ -29,16 +30,18 @@ namespace NeroxUSBController
         private Timer timer;
         private PointF buttonPosition;
         private StringFormat stringFormat = new StringFormat();
-        Main main;
+
+        private ControllerProperty property;
 
         public ToggleSwitch()
         {
+            InitializeComponent();
             SetTimer();
 
             this.DoubleBuffered = true;
 
             this.Paint += ToggleSwitch_Paint;
-            this.Click += toggleSwitch_Click;
+            this.Click += OnMouseClick;
 
             this.passivePoint = new Point(0, 18);
             this.activePoint = new Point(0, 0);
@@ -69,18 +72,25 @@ namespace NeroxUSBController
 
         internal void setToggleSwitch()
         {
-            main = (Main)Parent.Parent;
-            this.colorPick = main.colorPick;
-            this.colorPick.pickMouseDown(new MouseEventHandler(this.toggleSwitch_Click));
+            //TODO: rework
+            //main = (Main)Parent.Parent;
+            //this.colorPick = main.colorPick;
+            //this.colorPick.pickMouseDown(new MouseEventHandler(this.toggleSwitch_Click));
         }
 
-        private void toggleSwitch_Click(object sender, EventArgs e)
+        public MouseEventHandler GetOnMouseClick()
+        {
+            return OnMouseClick;
+        }
+
+        /*
+        protected override void OnMouseClick(object sender, EventArgs e)
         {
             // isActive gives previous status
             if (this.isActive())
             {
-                main.ActiveSelection = this;
-                if (sender is ColorPick)
+                UserControllerManager.Select(this);
+                if (sender is ColorPicker)
                 {
                     this.ActiveColor = this.colorPick.Forecolor();
                     this.Refresh();
@@ -92,6 +102,7 @@ namespace NeroxUSBController
                 }
             }
         }
+        */
 
         private void ToggleSwitch_ButtonTimer(object sender, EventArgs e)
         {
@@ -121,18 +132,18 @@ namespace NeroxUSBController
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            Main main = (Main)Parent.Parent;
             if (!active)
             {
-                main.deactivateAll();
+                if (property != null)
+                    property.SwitchHandler(active);
+                UserControllerManager.DeactivateAll();
                 active = true;
-                main.pressedAny = true;
                 timer.Start();
             }
             else
             {
-                if (!main.pressedAny)
-                    this.colorPick.colorPickReset();
+                if (property != null)
+                    property.SwitchHandler(active);
                 active = false;
                 timer.Start();
             }
@@ -239,9 +250,50 @@ namespace NeroxUSBController
         }
 
         public Boolean isActive() { return active; }
-        public void deactivateSwitch() { active = false; timer.Start(); this.Refresh(); }
+        public override void Deactivate() { active = false; timer.Start(); this.Refresh(); }
         public void ToggleSwitchText(String str) { SwitchLabel.Text = str; }
         public String ToggleSwitchText() { return SwitchLabel.Text; }
         public void RefreshLabel() { SwitchLabel.Refresh(); }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // ToggleSwitch
+            // 
+            this.AllowDrop = true;
+            this.Name = "ToggleSwitch";
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.ToggleSwitch_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.ToggleSwitch_DragEnter);
+            this.ResumeLayout(false);
+
+        }
+
+
+        private void ToggleSwitch_DragDrop(object sender, DragEventArgs e)
+        {
+            TreeNode node = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
+            property = (ControllerProperty)Activator.CreateInstance((Type)node.Tag);
+
+            PropertyPanelManager.SetPropertyPanel(property);
+            UserControllerManager.Select(this);
+        }
+
+        private void ToggleSwitch_DragEnter(object sender, DragEventArgs e)
+        {
+            TreeNode node = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
+            Type propertyType = (Type)node.Tag;
+            System.Reflection.MethodInfo info = propertyType.GetMethod("SwitchHandler");
+
+
+            if (info != null && info.DeclaringType != typeof(ControllerProperty))
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
     }
 }

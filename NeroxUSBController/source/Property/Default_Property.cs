@@ -5,75 +5,45 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel;
+using NeroxUSBController.source.Manager;
 
 namespace NeroxUSBController
 {
     class Default_Property : ControllerProperty
     {
-        public ColorPick ColorPicker;
-        public PropertyControlText NameTextBox;
-        private Panel propertyPanel;
-
-        public bool isActive = false;
-
-        private System.Drawing.Point colorPickerPos = new System.Drawing.Point(370, 50);
-        private System.Drawing.Size colorPickerSize = new System.Drawing.Size(75, 75);
-
-
         public Default_Property()
         {
-            // 
-            // colorPicker
-            // 
-            this.ColorPicker = new ColorPick();
-            this.ColorPicker.buttonImage = global::NeroxUSBController.Properties.Resources.metal_gui_indicator;
-            this.ColorPicker.Location = colorPickerPos;
-            this.ColorPicker.Name = "colorPicker";
-            this.ColorPicker.Size = colorPickerSize;
-            this.ColorPicker.TabIndex = 2;
-            this.ColorPicker.Text = "colorPicker";
-            this.ColorPicker.Visible = false;
-
-            // 
-            // NameTextBox
-            // 
-            NameTextBox = new PropertyControlText();
-            this.NameTextBox.BackColor = System.Drawing.Color.FromArgb(28, 28, 28);
-            this.NameTextBox.BorderStyle = BorderStyle.FixedSingle;
-            this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.NameTextBox.ForeColor = System.Drawing.Color.Maroon;
-            this.NameTextBox.Location = new System.Drawing.Point(33, 50);
-            this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.NameTextBox.TabIndex = 1;
-            this.NameTextBox.Visible = false;
+            InitializeComponent();
         }
 
-        public void SetControllers(Panel property_panel)
+        public ColorPicker GetColorPicker()
         {
-            this.propertyPanel = property_panel;
-
-            //
-            // Controls
-            //
-            this.propertyPanel.Controls.Add(this.ColorPicker);
-            this.propertyPanel.Controls.Add(this.NameTextBox);
+            return ColorPicker;
         }
 
-        public void Switch()
+        private void InitializeComponent()
         {
-            if (this.isActive)
-            {
-                this.ColorPicker.Visible = false;
-                this.NameTextBox.Visible = false;
-            }
-            else
-            {
-                this.ColorPicker.Visible = true;
-                this.NameTextBox.Visible = true;
-            }
+            this.ColorPicker = new NeroxUSBController.ColorPicker();
+            this.SuspendLayout();
+            // 
+            // ColorPicker
+            // 
+            this.ColorPicker.AutoSize = true;
+            this.ColorPicker.Location = new System.Drawing.Point(21, 100);
+            this.ColorPicker.Name = "ColorPicker";
+            this.ColorPicker.Size = new System.Drawing.Size(90, 90);
+            this.ColorPicker.TabIndex = 0;
+            // 
+            // Default_Property
+            // 
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.Controls.Add(this.ColorPicker);
+            this.Name = "Default_Property";
+            this.Size = new System.Drawing.Size(929, 363);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
-            this.isActive = !this.isActive;
         }
     }
 }

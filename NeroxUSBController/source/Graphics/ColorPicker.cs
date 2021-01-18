@@ -8,20 +8,20 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
-
+using NeroxUSBController.source.Manager;
 
 namespace NeroxUSBController
 {
-    public class ColorPick : Control
+    public class ColorPicker : UserControl
     {
         ColorDialog colorDialog = new ColorDialog();
         [Description("Button Edge Image"), Category("Appearance"), DefaultValue(0), Browsable(true)]
-        public Image buttonImage { get; set; }
+        public Image buttonImage = Properties.Resources.metal_gui_indicator;
         public delegate void EventHandler(object sender, EventArgs e);
         private Color colorpick_shown_color;
         private int colorLighter = 25;
 
-        public ColorPick()
+        public ColorPicker()
         {
             this.Paint += ColorPick_Paint;
             this.MouseDown += new MouseEventHandler(this.colorPick_Click);
@@ -50,6 +50,7 @@ namespace NeroxUSBController
             {
                 // Set form background to the selected color.
                 base.ForeColor = colorDialog.Color;
+                UserControllerManager.SetUserControllerColor(base.ForeColor);
             }
         }
 

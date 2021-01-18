@@ -1,4 +1,6 @@
-﻿namespace NeroxUSBController
+﻿using NeroxUSBController.Graphics;
+
+namespace NeroxUSBController
 {
     partial class Main
     {
@@ -30,14 +32,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.side_panel = new System.Windows.Forms.Panel();
+            this.treeView = new NeroxUSBController.AppTreeView();
+            this.settingsSide_panel = new NeroxUSBController.SettingsSide();
             this.property_panel = new System.Windows.Forms.Panel();
             this.button_panel = new System.Windows.Forms.Panel();
+            this.pot1 = new NeroxUSBController.Graphics.Pot();
+            this.pot2 = new NeroxUSBController.Graphics.Pot();
             this.switch_label2 = new System.Windows.Forms.Label();
             this.switch_label1 = new System.Windows.Forms.Label();
-            this.control_panel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pot1 = new NeroxUSBController.Pot();
-            this.pot2 = new NeroxUSBController.Pot();
             this.toggleSwitch2 = new NeroxUSBController.ToggleSwitch();
             this.toggleSwitch1 = new NeroxUSBController.ToggleSwitch();
             this.chooseButton5 = new NeroxUSBController.ChooseButton();
@@ -46,13 +48,12 @@
             this.chooseButton2 = new NeroxUSBController.ChooseButton();
             this.chooseButton1 = new NeroxUSBController.ChooseButton();
             this.chooseButton0 = new NeroxUSBController.ChooseButton();
-            this.treeView = new NeroxUSBController.AppTreeView();
-            this.settingsSide_panel = new NeroxUSBController.SettingsSide();
+            this.control_panel = new System.Windows.Forms.Panel();
             this.systemAppButton2 = new NeroxUSBController.SystemAppButton();
             this.systemAppButton1 = new NeroxUSBController.SystemAppButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.settings_panel = new NeroxUSBController.Settings();
             this.side_panel.SuspendLayout();
-            this.property_panel.SuspendLayout();
             this.button_panel.SuspendLayout();
             this.control_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,6 +68,36 @@
             this.side_panel.Name = "side_panel";
             this.side_panel.Size = new System.Drawing.Size(293, 416);
             this.side_panel.TabIndex = 1;
+            // 
+            // treeView
+            // 
+            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.treeView.ButtonImageHide = ((System.Drawing.Image)(resources.GetObject("treeView.ButtonImageHide")));
+            this.treeView.ButtonImageShow = ((System.Drawing.Image)(resources.GetObject("treeView.ButtonImageShow")));
+            this.treeView.ChildBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeView.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.treeView.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.treeView.Location = new System.Drawing.Point(0, 0);
+            this.treeView.Name = "treeView";
+            this.treeView.ParentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.treeView.ShowLines = false;
+            this.treeView.ShowPlusMinus = false;
+            this.treeView.ShowRootLines = false;
+            this.treeView.Size = new System.Drawing.Size(293, 416);
+            this.treeView.TabIndex = 0;
+            this.treeView.TabStop = false;
+            this.treeView.Tag = "";
+            // 
+            // settingsSide_panel
+            // 
+            this.settingsSide_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.settingsSide_panel.Location = new System.Drawing.Point(0, 0);
+            this.settingsSide_panel.Name = "settingsSide_panel";
+            this.settingsSide_panel.Size = new System.Drawing.Size(293, 416);
+            this.settingsSide_panel.TabIndex = 1;
+            this.settingsSide_panel.Visible = false;
             // 
             // property_panel
             // 
@@ -100,6 +131,34 @@
             this.button_panel.Size = new System.Drawing.Size(507, 235);
             this.button_panel.TabIndex = 3;
             // 
+            // pot1
+            // 
+            this.pot1.ActiveColor = System.Drawing.Color.Empty;
+            this.pot1.AllowDrop = true;
+            this.pot1.HighLimit = 135;
+            this.pot1.Location = new System.Drawing.Point(13, 127);
+            this.pot1.LowLimit = -135;
+            this.pot1.Name = "pot1";
+            this.pot1.Rotor = global::NeroxUSBController.Properties.Resources.pot_head;
+            this.pot1.RotorGlow = global::NeroxUSBController.Properties.Resources.pot_head_indicator;
+            this.pot1.Size = new System.Drawing.Size(70, 70);
+            this.pot1.Stator = global::NeroxUSBController.Properties.Resources.pot_base;
+            this.pot1.TabIndex = 12;
+            // 
+            // pot2
+            // 
+            this.pot2.ActiveColor = System.Drawing.Color.Empty;
+            this.pot2.AllowDrop = true;
+            this.pot2.HighLimit = 135;
+            this.pot2.Location = new System.Drawing.Point(412, 127);
+            this.pot2.LowLimit = -135;
+            this.pot2.Name = "pot2";
+            this.pot2.Rotor = global::NeroxUSBController.Properties.Resources.pot_head;
+            this.pot2.RotorGlow = global::NeroxUSBController.Properties.Resources.pot_head_indicator;
+            this.pot2.Size = new System.Drawing.Size(70, 70);
+            this.pot2.Stator = global::NeroxUSBController.Properties.Resources.pot_base;
+            this.pot2.TabIndex = 11;
+            // 
             // switch_label2
             // 
             this.switch_label2.ForeColor = System.Drawing.Color.Red;
@@ -120,6 +179,106 @@
             this.switch_label1.Text = "switch1";
             this.switch_label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // toggleSwitch2
+            // 
+            this.toggleSwitch2.ActiveColor = System.Drawing.Color.White;
+            this.toggleSwitch2.AllowDrop = true;
+            this.toggleSwitch2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.toggleSwitch2.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toggleSwitch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.toggleSwitch2.Location = new System.Drawing.Point(433, 43);
+            this.toggleSwitch2.Name = "toggleSwitch2";
+            this.toggleSwitch2.PassiveColor = System.Drawing.Color.Gray;
+            this.toggleSwitch2.Size = new System.Drawing.Size(26, 43);
+            this.toggleSwitch2.SwitchLabel = this.switch_label2;
+            this.toggleSwitch2.TabIndex = 7;
+            // 
+            // toggleSwitch1
+            // 
+            this.toggleSwitch1.ActiveColor = System.Drawing.Color.White;
+            this.toggleSwitch1.AllowDrop = true;
+            this.toggleSwitch1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.toggleSwitch1.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toggleSwitch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.toggleSwitch1.Location = new System.Drawing.Point(33, 43);
+            this.toggleSwitch1.Name = "toggleSwitch1";
+            this.toggleSwitch1.PassiveColor = System.Drawing.Color.Gray;
+            this.toggleSwitch1.Size = new System.Drawing.Size(26, 43);
+            this.toggleSwitch1.SwitchLabel = this.switch_label1;
+            this.toggleSwitch1.TabIndex = 6;
+            // 
+            // chooseButton5
+            // 
+            this.chooseButton5.ActiveColor = System.Drawing.Color.White;
+            this.chooseButton5.AllowDrop = true;
+            this.chooseButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.chooseButton5.BorderThickness = 2F;
+            this.chooseButton5.Location = new System.Drawing.Point(299, 116);
+            this.chooseButton5.Margin = new System.Windows.Forms.Padding(5);
+            this.chooseButton5.Name = "chooseButton5";
+            this.chooseButton5.Size = new System.Drawing.Size(94, 81);
+            this.chooseButton5.TabIndex = 5;
+            // 
+            // chooseButton4
+            // 
+            this.chooseButton4.ActiveColor = System.Drawing.Color.White;
+            this.chooseButton4.AllowDrop = true;
+            this.chooseButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.chooseButton4.BorderThickness = 2F;
+            this.chooseButton4.Location = new System.Drawing.Point(195, 116);
+            this.chooseButton4.Margin = new System.Windows.Forms.Padding(5);
+            this.chooseButton4.Name = "chooseButton4";
+            this.chooseButton4.Size = new System.Drawing.Size(94, 81);
+            this.chooseButton4.TabIndex = 4;
+            // 
+            // chooseButton3
+            // 
+            this.chooseButton3.ActiveColor = System.Drawing.Color.White;
+            this.chooseButton3.AllowDrop = true;
+            this.chooseButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.chooseButton3.BorderThickness = 2F;
+            this.chooseButton3.Location = new System.Drawing.Point(91, 116);
+            this.chooseButton3.Margin = new System.Windows.Forms.Padding(5);
+            this.chooseButton3.Name = "chooseButton3";
+            this.chooseButton3.Size = new System.Drawing.Size(94, 81);
+            this.chooseButton3.TabIndex = 3;
+            // 
+            // chooseButton2
+            // 
+            this.chooseButton2.ActiveColor = System.Drawing.Color.White;
+            this.chooseButton2.AllowDrop = true;
+            this.chooseButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.chooseButton2.BorderThickness = 2F;
+            this.chooseButton2.Location = new System.Drawing.Point(299, 25);
+            this.chooseButton2.Margin = new System.Windows.Forms.Padding(5);
+            this.chooseButton2.Name = "chooseButton2";
+            this.chooseButton2.Size = new System.Drawing.Size(94, 81);
+            this.chooseButton2.TabIndex = 2;
+            // 
+            // chooseButton1
+            // 
+            this.chooseButton1.ActiveColor = System.Drawing.Color.White;
+            this.chooseButton1.AllowDrop = true;
+            this.chooseButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.chooseButton1.BorderThickness = 2F;
+            this.chooseButton1.Location = new System.Drawing.Point(195, 25);
+            this.chooseButton1.Margin = new System.Windows.Forms.Padding(5);
+            this.chooseButton1.Name = "chooseButton1";
+            this.chooseButton1.Size = new System.Drawing.Size(94, 81);
+            this.chooseButton1.TabIndex = 1;
+            // 
+            // chooseButton0
+            // 
+            this.chooseButton0.ActiveColor = System.Drawing.Color.White;
+            this.chooseButton0.AllowDrop = true;
+            this.chooseButton0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.chooseButton0.BorderThickness = 2F;
+            this.chooseButton0.Location = new System.Drawing.Point(91, 25);
+            this.chooseButton0.Margin = new System.Windows.Forms.Padding(5);
+            this.chooseButton0.Name = "chooseButton0";
+            this.chooseButton0.Size = new System.Drawing.Size(94, 81);
+            this.chooseButton0.TabIndex = 0;
+            // 
             // control_panel
             // 
             this.control_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
@@ -134,174 +293,6 @@
             this.control_panel.TabIndex = 0;
             this.control_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.control_panel_MouseDown);
             this.control_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.control_panel_MouseMove);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(350, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 27);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pot1
-            // 
-            this.pot1.HighLimit = 135;
-            this.pot1.Location = new System.Drawing.Point(13, 127);
-            this.pot1.LowLimit = -135;
-            this.pot1.Name = "pot1";
-            this.pot1.Rotor = global::NeroxUSBController.Properties.Resources.pot_head;
-            this.pot1.RotorGlow = global::NeroxUSBController.Properties.Resources.pot_head_indicator;
-            this.pot1.Size = new System.Drawing.Size(70, 70);
-            this.pot1.Stator = global::NeroxUSBController.Properties.Resources.pot_base;
-            this.pot1.TabIndex = 12;
-            this.pot1.Text = "pot1";
-            // 
-            // pot2
-            // 
-            this.pot2.HighLimit = 135;
-            this.pot2.Location = new System.Drawing.Point(412, 127);
-            this.pot2.LowLimit = -135;
-            this.pot2.Name = "pot2";
-            this.pot2.Rotor = global::NeroxUSBController.Properties.Resources.pot_head;
-            this.pot2.RotorGlow = global::NeroxUSBController.Properties.Resources.pot_head_indicator;
-            this.pot2.Size = new System.Drawing.Size(70, 70);
-            this.pot2.Stator = global::NeroxUSBController.Properties.Resources.pot_base;
-            this.pot2.TabIndex = 11;
-            this.pot2.Text = "pot2";
-            // 
-            // toggleSwitch2
-            // 
-            this.toggleSwitch2.ActiveColor = System.Drawing.Color.White;
-            this.toggleSwitch2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.toggleSwitch2.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.toggleSwitch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.toggleSwitch2.Location = new System.Drawing.Point(433, 43);
-            this.toggleSwitch2.Name = "toggleSwitch2";
-            this.toggleSwitch2.PassiveColor = System.Drawing.Color.Gray;
-            this.toggleSwitch2.Size = new System.Drawing.Size(26, 43);
-            this.toggleSwitch2.SwitchLabel = this.switch_label2;
-            this.toggleSwitch2.TabIndex = 7;
-            this.toggleSwitch2.Text = "On";
-            // 
-            // toggleSwitch1
-            // 
-            this.toggleSwitch1.ActiveColor = System.Drawing.Color.White;
-            this.toggleSwitch1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.toggleSwitch1.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.toggleSwitch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.toggleSwitch1.Location = new System.Drawing.Point(33, 43);
-            this.toggleSwitch1.Name = "toggleSwitch1";
-            this.toggleSwitch1.PassiveColor = System.Drawing.Color.Gray;
-            this.toggleSwitch1.Size = new System.Drawing.Size(26, 43);
-            this.toggleSwitch1.SwitchLabel = this.switch_label1;
-            this.toggleSwitch1.TabIndex = 6;
-            this.toggleSwitch1.Text = "On";
-            // 
-            // chooseButton5
-            // 
-            this.chooseButton5.ActiveColor = System.Drawing.Color.White;
-            this.chooseButton5.AllowDrop = true;
-            this.chooseButton5.BorderThickness = 2F;
-            this.chooseButton5.Location = new System.Drawing.Point(299, 116);
-            this.chooseButton5.Margin = new System.Windows.Forms.Padding(5);
-            this.chooseButton5.Name = "chooseButton5";
-            this.chooseButton5.Size = new System.Drawing.Size(94, 81);
-            this.chooseButton5.TabIndex = 5;
-            this.chooseButton5.Text = "Button5";
-            // 
-            // chooseButton4
-            // 
-            this.chooseButton4.ActiveColor = System.Drawing.Color.White;
-            this.chooseButton4.AllowDrop = true;
-            this.chooseButton4.BorderThickness = 2F;
-            this.chooseButton4.Location = new System.Drawing.Point(195, 116);
-            this.chooseButton4.Margin = new System.Windows.Forms.Padding(5);
-            this.chooseButton4.Name = "chooseButton4";
-            this.chooseButton4.Size = new System.Drawing.Size(94, 81);
-            this.chooseButton4.TabIndex = 4;
-            this.chooseButton4.Text = "Button4";
-            // 
-            // chooseButton3
-            // 
-            this.chooseButton3.ActiveColor = System.Drawing.Color.White;
-            this.chooseButton3.AllowDrop = true;
-            this.chooseButton3.BorderThickness = 2F;
-            this.chooseButton3.Location = new System.Drawing.Point(91, 116);
-            this.chooseButton3.Margin = new System.Windows.Forms.Padding(5);
-            this.chooseButton3.Name = "chooseButton3";
-            this.chooseButton3.Size = new System.Drawing.Size(94, 81);
-            this.chooseButton3.TabIndex = 3;
-            this.chooseButton3.Text = "Button3";
-            // 
-            // chooseButton2
-            // 
-            this.chooseButton2.ActiveColor = System.Drawing.Color.White;
-            this.chooseButton2.AllowDrop = true;
-            this.chooseButton2.BorderThickness = 2F;
-            this.chooseButton2.Location = new System.Drawing.Point(299, 25);
-            this.chooseButton2.Margin = new System.Windows.Forms.Padding(5);
-            this.chooseButton2.Name = "chooseButton2";
-            this.chooseButton2.Size = new System.Drawing.Size(94, 81);
-            this.chooseButton2.TabIndex = 2;
-            this.chooseButton2.Text = "Button2";
-            // 
-            // chooseButton1
-            // 
-            this.chooseButton1.ActiveColor = System.Drawing.Color.White;
-            this.chooseButton1.AllowDrop = true;
-            this.chooseButton1.BorderThickness = 2F;
-            this.chooseButton1.Location = new System.Drawing.Point(195, 25);
-            this.chooseButton1.Margin = new System.Windows.Forms.Padding(5);
-            this.chooseButton1.Name = "chooseButton1";
-            this.chooseButton1.Size = new System.Drawing.Size(94, 81);
-            this.chooseButton1.TabIndex = 1;
-            this.chooseButton1.Text = "Button1";
-            // 
-            // chooseButton0
-            // 
-            this.chooseButton0.ActiveColor = System.Drawing.Color.White;
-            this.chooseButton0.AllowDrop = true;
-            this.chooseButton0.BorderThickness = 2F;
-            this.chooseButton0.Location = new System.Drawing.Point(91, 25);
-            this.chooseButton0.Margin = new System.Windows.Forms.Padding(5);
-            this.chooseButton0.Name = "chooseButton0";
-            this.chooseButton0.Size = new System.Drawing.Size(94, 81);
-            this.chooseButton0.TabIndex = 0;
-            this.chooseButton0.Text = "Button0";
-            // 
-            // treeView
-            // 
-            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.treeView.ButtonImageHide = ((System.Drawing.Image)(resources.GetObject("treeView.ButtonImageHide")));
-            this.treeView.ButtonImageShow = ((System.Drawing.Image)(resources.GetObject("treeView.ButtonImageShow")));
-            this.treeView.ChildBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeView.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.treeView.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Name = "treeView";
-            this.treeView.ParentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.treeView.ShowLines = false;
-            this.treeView.ShowPlusMinus = false;
-            this.treeView.ShowRootLines = false;
-            this.treeView.Size = new System.Drawing.Size(293, 416);
-            this.treeView.TabIndex = 0;
-            this.treeView.TabStop = false;
-            this.treeView.Tag = "";
-            // 
-            // settingsSide_panel
-            // 
-            this.settingsSide_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.settingsSide_panel.Location = new System.Drawing.Point(0, 0);
-            this.settingsSide_panel.Name = "settingsSide_panel";
-            this.settingsSide_panel.Size = new System.Drawing.Size(293, 416);
-            this.settingsSide_panel.TabIndex = 1;
-            this.settingsSide_panel.Visible = false;
             // 
             // systemAppButton2
             // 
@@ -325,6 +316,18 @@
             this.systemAppButton1.Size = new System.Drawing.Size(22, 22);
             this.systemAppButton1.TabIndex = 3;
             this.systemAppButton1.Text = "systemAppButton1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(350, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // settings_panel
             // 
@@ -352,8 +355,6 @@
             this.Name = "Main";
             this.Text = "Main";
             this.side_panel.ResumeLayout(false);
-            this.property_panel.ResumeLayout(false);
-            this.property_panel.PerformLayout();
             this.button_panel.ResumeLayout(false);
             this.control_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -384,7 +385,6 @@
         private Pot pot2;
         private Pot pot1;
         internal AppTreeView treeView;
-        private ColorPick colorPick1;
     }
 }
 

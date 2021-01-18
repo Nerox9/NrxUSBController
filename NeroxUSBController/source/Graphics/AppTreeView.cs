@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
+using NeroxUSBController.Wrappers.OSAudio;
+using NeroxUSBController.Property.SystemAudio;
 
 namespace NeroxUSBController
 {
@@ -69,18 +71,22 @@ namespace NeroxUSBController
 
         private void treeView_MouseSingleClick(object sender, MouseEventArgs e)
         {
+            Console.WriteLine("SingleClick "+e.Button);
             switch (e.Button)
             {
                 // Toggle the TreeNode under the mouse cursor 
                 // if the left mouse button was clicked. 
                 case MouseButtons.Left:
-                    this.GetNodeAt(e.X, e.Y).Toggle();
+                    TreeNode node = GetNodeAt(e.X, e.Y);
+                    if(node != null)
+                        node.Toggle();
                     break;
             }
         }
 
         public void treeView_ItemDrag(object sender, ItemDragEventArgs e)
         {
+            Console.WriteLine("Drag");
             TreeNode item = (TreeNode)e.Item;
             Boolean isParent = item.Parent == null;
            // Console.WriteLine(item.Name);
@@ -94,41 +100,35 @@ namespace NeroxUSBController
         {
             Main main = (Main)Parent.Parent;
 
-            Obs_Screen obs_Screen_Switch = new Obs_Screen();
-
-            Twitch twitch = main.twitch;
-            Twitch_Chat_Message twitch_Chat_Message = new Twitch_Chat_Message();
-            Twitch_Play_Ad twitch_Play_Ad = new Twitch_Play_Ad();
-            Twitch_Slow_Chat twitch_Slow_Chat = new Twitch_Slow_Chat();
-
-            twitch_Chat_Message.twitch = twitch;
-            twitch_Play_Ad.twitch = twitch;
-
             TreeNode OBS_Node = parentNode("OBS", "obs");
-            childNode("Screen Switch", "screenSwitch", obs_Screen_Switch, OBS_Node);
-            childNode("Node1", "node1", "", OBS_Node);
+            childNode("Screen Switch", "screenSwitch", typeof(Obs_Screen), OBS_Node);
+            childNode("Node1", "node1", typeof(Obs_Screen), OBS_Node);
 
             TreeNode Twitter_Node = parentNode("Twitter", "twitter");
-            childNode("Send Tweet", "sendTweet", "", Twitter_Node);
+            childNode("Send Tweet", "sendTweet", typeof(Obs_Screen), Twitter_Node);
 
             TreeNode Twitch_Node = parentNode("Twitch", "twitch");
-            childNode("Chat Message", "chatMessage", twitch_Chat_Message, Twitch_Node);
-            childNode("Play Ad", "playAd", twitch_Play_Ad, Twitch_Node);
-            childNode("Slow Chat", "slowChat", twitch_Slow_Chat, Twitch_Node);
-            childNode("Sub Chat", "subChat", twitch_Slow_Chat, Twitch_Node);
+            childNode("Chat Message", "chatMessage", typeof(Twitch_Chat_Message), Twitch_Node);
+            childNode("Play Ad", "playAd", typeof(Twitch_Play_Ad), Twitch_Node);
+            childNode("Slow Chat", "slowChat", typeof(Twitch_Slow_Chat), Twitch_Node);
+            childNode("Sub Chat", "subChat", typeof(Twitch_Slow_Chat), Twitch_Node);
+
+            TreeNode Audio_Node = parentNode("Audio", "audio");
+            childNode("Volume", "volume", typeof(SystemAudioVolumeProperty), Audio_Node);
+            childNode("Mute", "mute", typeof(SystemAudioMuteProperty), Audio_Node);
 
 
             TreeNode parentNode(string text, string name)
             {
                 TreeNode treeNode = new TreeNode(text);
                 treeNode.Name = name;
-                treeNode.Tag = "";
+                treeNode.Tag = null;
 
                 this.Nodes.Add(treeNode);
                 return treeNode;
             }
 
-            void childNode(string text, string name, object tag, TreeNode parent)
+            void childNode(string text, string name, Type tag, TreeNode parent)
             {
                 TreeNode treeNode = new TreeNode(text);
                 treeNode.Name = name;

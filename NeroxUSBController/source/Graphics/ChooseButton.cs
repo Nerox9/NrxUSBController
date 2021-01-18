@@ -6,32 +6,39 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
+using NeroxUSBController.source.Manager;
 
 namespace NeroxUSBController
 {
 
-    class ChooseButton : UserController
+    public class ChooseButton : UserController
     {
-        private SolidBrush borderBrush, textBrush;
+        private SolidBrush borderBrush, activeBorderBrush, passiveBorderBrush, textBrush;
         private Rectangle borderRectangle;
         private bool active = false;
         private bool pressed = false;
+        private bool selected = false;
         private StringFormat stringFormat = new StringFormat();
-        private Color pushColor;
         private Color backColor;
-        private ColorPick colorPick;
-        Main main;
+
+        private ControllerProperty property;
 
         public override Cursor Cursor { get; set; } = Cursors.Hand;
         [Description("Sets the Border Thickness"), Category("Appearance"), DefaultValue(3), Browsable(true)]
         public float BorderThickness { get; set; }
-        [Description("Activated Color"), Category("Appearance"), DefaultValue(0), Browsable(true)]
-        public Color ActiveColor { get; set; }
+        [Description("Sets the Border Color"), Category("Border Appearance"), DefaultValue(0), Browsable(true)]
+        public Color passiveBorderColor = Color.Red;
+        [Description("Sets the Active Border Color"), Category("Border Appearance"), DefaultValue(0), Browsable(true)]
+        public Color activeBorderColor = Color.Blue;
+        [Description("Sets the Active Border Color"), Category("Border Appearance"), DefaultValue(0), Browsable(true)]
+        public Color textColor = Color.White;
 
         public ChooseButton()
         {
-            borderBrush = new SolidBrush(Color.Red);
-            textBrush = new SolidBrush(Color.White);
+            borderBrush = new SolidBrush(passiveBorderColor);
+            passiveBorderBrush = new SolidBrush(passiveBorderColor);
+            activeBorderBrush = new SolidBrush(activeBorderColor);
+            textBrush = new SolidBrush(textColor);
 
             stringFormat.Alignment = StringAlignment.Center;
             stringFormat.LineAlignment = StringAlignment.Center;
@@ -42,20 +49,14 @@ namespace NeroxUSBController
             this.Paint += chooseButton_Paint;
             this.DragEnter += chooseButton_DragEnter;
             this.DragDrop += chooseButton_DragDrop;
-            this.Click += chooseButton_Click;
-        }
-
-        internal void setChooseButton()
-        {
-            main = (Main)Parent.Parent;
-            this.colorPick = main.colorPick;
-            this.colorPick.pickMouseDown(new MouseEventHandler(this.chooseButton_Click));
-            
+            this.Click += OnMouseClick;
         }
 
         private void chooseButton_Paint(object sender, PaintEventArgs e)
         {
-            pushColor = Color.FromArgb(ActiveColor.R / 2, ActiveColor.G / 2, ActiveColor.B / 2);
+            base.BackColor = active ? ActiveColor : PassiveColor;
+            borderBrush = selected ? activeBorderBrush : passiveBorderBrush;
+
             borderRectangle = new Rectangle(0, 0, Width, Height);
             e.Graphics.DrawRectangle(new Pen(borderBrush, BorderThickness), borderRectangle);
             e.Graphics.DrawString(this.Text, this.Font, (active) ? textBrush : borderBrush, borderRectangle, stringFormat);
@@ -66,43 +67,43 @@ namespace NeroxUSBController
             if (!pressed)
                 backColor = base.BackColor;
             base.OnMouseDown(e);
-            base.BackColor = pushColor;
-            active = true;
+            //base.BackColor = pushColor;
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            if (!pressed && !main.pressedAny)
+            if (!selected)
             {
                 base.OnMouseUp(e);
                 base.BackColor = ActiveColor;
-                active = false;
-                pressed = true;
-                main.pressedAny = true;
-                main.ActiveSelection = this;
-                main.SetPropertyPanelController(this);
+                selected = true;
+                PropertyPanelManager.SetPropertyPanel(property);
+                UserControllerManager.Select(this);
             }
 
             else
             {
                 base.OnMouseUp(e);
-                base.BackColor = backColor;
-                this.colorPick.resetForecolor();
-                active = false;
-                pressed = false;
-                main.SetPropertyPanelController(this);
+                Deselect();
+                UserControllerManager.DeactivateAll();
             }
         }
 
-        private void chooseButton_Click(object sender, EventArgs e)
+        public MouseEventHandler GetOnMouseClick()
+        {
+            return OnMouseClick;
+        }
+
+        /*
+        protected override void OnMouseClick(object sender, EventArgs e)
         {
             // isActive gives previous status
             if (this.isActive())
             {
-                if (sender is ColorPick)
+                if (sender is ColorPicker)
                 {
-                    this.BackColor = this.colorPick.Forecolor();
-                    this.ActiveColor = this.colorPick.Forecolor();
+                    this.BackColor = UserControllerManager.ActiveColor;
+                    this.ActiveColor = UserControllerManager.ActiveColor;
                 }
             }
             else if (this.isClicked())
@@ -110,32 +111,66 @@ namespace NeroxUSBController
                 if (sender is ChooseButton)
                 {
                     ChooseButton button = (ChooseButton)sender;
-                    main.deactivateAll();
-                    main.pressedAny = false;
-                    this.colorPick.Forecolor(this.ActiveColor);
+                    UserControllerManager.Select(this);
+                    //main.pressedAny = false;
+                    //UserControllerManager.ActiveColor = ActiveColor;
                 }
             }
         }
+        */
 
         private void chooseButton_DragEnter(object sender, DragEventArgs e)
         {
-            e.Effect = DragDropEffects.All;
+            TreeNode node = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
+            Type propertyType = (Type)node.Tag;
+            System.Reflection.MethodInfo info = propertyType.GetMethod("ButtonHandler");
+
+
+            if (info != null && info.DeclaringType != typeof(ControllerProperty))
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
         }
 
         private void chooseButton_DragDrop(object sender, DragEventArgs e)
         {
             TreeNode node = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
-            controlType = (ControllerProperty)node.Tag;
-            setActive();
+            
+            PropertyPanelManager.SetPropertyPanel(node.Tag);
+            property = (ControllerProperty)node.Tag;
+            UserControllerManager.Select(this);
 
             Console.WriteLine(node);
             //Console.WriteLine(sender);
         }
 
+        public override void Select()
+        {
+            selected = true;
+            Refresh();
+        }
+
+        public override void Deselect()
+        {
+            // TODO: take it to deactivate: base.BackColor = PassiveColor;
+            if(selected)
+            {
+                base.Deselect();
+                UserControllerManager.ResetColorPicker();
+                selected = false;
+            }
+            
+            Refresh();
+        }
+
         public Boolean isActive() { return pressed; }
         public Boolean isClicked() { return active; }
-        public void setActive() { main.deactivateAll(); OnMouseDown(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); chooseButton_Click(this, new EventArgs()); OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); }
+        public override void Activate() {  }
         public void activateButton() { if (!pressed) { OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); } }
-        public void deactivateButton() { if (pressed) { OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); } }
+        public override void Deactivate() { if (pressed) { OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); } }
     }
 }

@@ -42,7 +42,7 @@ namespace NeroxUSBController
 
         private void DrawColorWheel(object sender, PaintEventArgs e)
         {
-            Graphics gr = e.Graphics;
+            System.Drawing.Graphics gr = e.Graphics;
             Color outline_color = Color.Red;
             int xmin = 0, ymin = 0, wid = base.Width - 2, hgt = base.Height - 2;
 
