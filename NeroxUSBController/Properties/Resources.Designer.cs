@@ -63,6 +63,36 @@ namespace NeroxUSBController.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exitbutton {
+            get {
+                object obj = ResourceManager.GetObject("exitbutton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exitbuttonSelected {
+            get {
+                object obj = ResourceManager.GetObject("exitbuttonSelected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hidetree {
+            get {
+                object obj = ResourceManager.GetObject("hidetree", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap metal_esc {
             get {
                 object obj = ResourceManager.GetObject("metal_esc", resourceCulture);
@@ -113,6 +143,26 @@ namespace NeroxUSBController.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mute {
+            get {
+                object obj = ResourceManager.GetObject("mute", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap obs {
+            get {
+                object obj = ResourceManager.GetObject("obs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pot_base {
             get {
                 object obj = ResourceManager.GetObject("pot_base", resourceCulture);
@@ -136,6 +186,56 @@ namespace NeroxUSBController.Properties {
         internal static System.Drawing.Bitmap pot_head_indicator {
             get {
                 object obj = ResourceManager.GetObject("pot_head_indicator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settingsbutton {
+            get {
+                object obj = ResourceManager.GetObject("settingsbutton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap showtree {
+            get {
+                object obj = ResourceManager.GetObject("showtree", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sound {
+            get {
+                object obj = ResourceManager.GetObject("sound", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap twitch {
+            get {
+                object obj = ResourceManager.GetObject("twitch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap twitter {
+            get {
+                object obj = ResourceManager.GetObject("twitter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

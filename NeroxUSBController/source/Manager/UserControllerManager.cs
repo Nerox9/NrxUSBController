@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NeroxUSBController.Controller;
+using NeroxUSBController.Controller.Graphic;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NeroxUSBController.source.Manager
+namespace NeroxUSBController.Manager
 {
     static public class UserControllerManager
     {
@@ -86,16 +88,9 @@ namespace NeroxUSBController.source.Manager
             //activeUserController.OnMouseDown(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0)); chooseButton_Click(this, new EventArgs()); OnMouseUp(new MouseEventArgs(Control.MouseButtons, 0, 0, 0, 0));
         }
 
-        static public void DeactivateAll()
+        static public UserController GetActive()
         {
-            foreach(ChooseButton button in chooseButtons)
-            {
-                button.Deactivate();
-            }
-            foreach(ToggleSwitch toggleSwitch in toggleSwitches)
-            {
-                toggleSwitch.Deactivate();
-            }
+            return selectedUserController;
         }
     }
 }

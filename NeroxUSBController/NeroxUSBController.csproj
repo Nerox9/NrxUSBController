@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>NeroxUSBController</RootNamespace>
     <AssemblyName>NeroxUSBController</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -36,6 +37,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,6 +48,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>
@@ -80,6 +84,9 @@
     </Reference>
     <Reference Include="Microsoft.Extensions.Primitives, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.10.0\lib\net35\NAudio.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\OBS.WebSocketInterface.3.0.0\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -224,88 +231,145 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="source\Graphics\ChooseButton.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="source\Controller\Graphic\AppScrollBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Controller\Graphic\ChooseButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Controller\Graphic\ColorPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Controller\Graphic\ColorWheel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="source\Graphics\ColorPick.cs">
+    <Compile Include="source\Controller\Graphic\DragImage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="source\Graphics\ColorWheel.cs">
-      <SubType>Component</SubType>
+    <Compile Include="source\Manager\PanelManager.cs" />
+    <Compile Include="source\Manager\ProjectColor.cs" />
+    <Compile Include="source\Manager\UserControllerManager.cs" />
+    <Compile Include="source\Panel\ButtonControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="source\Property\ControllerProperty.cs">
-      <SubType>Component</SubType>
+    <Compile Include="source\Panel\ButtonControl.Designer.cs">
+      <DependentUpon>ButtonControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\Property\Default_Property.cs">
-      <SubType>Component</SubType>
+    <Compile Include="source\Panel\Property\SystemAudio\SystemAudioMuteProperty.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="source\Wrappers\Obs.cs" />
-    <Compile Include="source\Forms\Main.cs">
+    <Compile Include="source\Panel\Property\SystemAudio\SystemAudioProperty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Panel\Property\ControllerProperty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Panel\Property\Default_Property.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Panel\Property\SystemAudio\SystemAudioVolumeProperty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Wrapper\Obs.cs" />
+    <Compile Include="source\Form\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="source\Forms\Main.Designer.cs">
+    <Compile Include="source\Form\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\Property\Obs_Property.cs">
-      <SubType>Component</SubType>
+    <Compile Include="source\Panel\Property\Obs_Property.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="source\Graphics\Pot.cs">
-      <SubType>Component</SubType>
+    <Compile Include="source\Controller\Graphic\Pot.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="source\Controllers\PropertyControlText.cs">
+    <Compile Include="source\Controller\PropertyControlText.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="source\Graphics\AppTreeView.cs">
+    <Compile Include="source\Controller\Graphic\AppTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="source\Controllers\PropertyPanelController.cs" />
-    <Compile Include="source\Wrappers\SerialCom.cs" />
-    <Compile Include="source\Forms\Settings.cs">
+    <Compile Include="source\Manager\PropertyPanelManager.cs" />
+    <Compile Include="source\Wrapper\OSAudio\OSAudio.cs" />
+    <Compile Include="source\Wrapper\OSAudio\OSAudioApp.cs" />
+    <Compile Include="source\Wrapper\SerialCom.cs" />
+    <Compile Include="source\Form\Settings.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="source\Forms\SystemAppButton.cs">
+    <Compile Include="source\Form\SystemAppButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="source\Forms\SystemPanel.cs">
+    <Compile Include="source\Form\SystemPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="source\Graphics\ToggleSwitch.cs">
-      <SubType>Component</SubType>
+    <Compile Include="source\Controller\Graphic\ToggleSwitch.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="source\Wrappers\Twitch.cs" />
+    <Compile Include="source\Wrapper\Twitch.cs" />
     <Compile Include="data\TwitchInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TwitchInfo.resx</DependentUpon>
     </Compile>
-    <Compile Include="source\Property\Twitch_Property.cs">
-      <SubType>Component</SubType>
+    <Compile Include="source\Panel\Property\Twitch_Property.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="source\Wrappers\Twitter.cs" />
-    <Compile Include="source\Property\Twitter_Property.cs">
-      <SubType>Component</SubType>
+    <Compile Include="source\Wrapper\Twitter.cs" />
+    <Compile Include="source\Panel\Property\Twitter_Property.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="source\Controllers\UserController.cs">
-      <SubType>Component</SubType>
+    <Compile Include="source\Controller\UserController.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <EmbeddedResource Include="source\Forms\Main.resx">
+    <EmbeddedResource Include="source\Controller\UserController.resx">
+      <DependentUpon>UserController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Form\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="data\TwitchInfo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TwitchInfo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Controller\Graphic\ChooseButton.resx">
+      <DependentUpon>ChooseButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Controller\Graphic\Pot.resx">
+      <DependentUpon>Pot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Controller\Graphic\ToggleSwitch.resx">
+      <DependentUpon>ToggleSwitch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Panel\ButtonControl.resx">
+      <DependentUpon>ButtonControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Panel\Property\SystemAudio\SystemAudioMuteProperty.resx">
+      <DependentUpon>SystemAudioMuteProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Panel\Property\SystemAudio\SystemAudioProperty.resx">
+      <DependentUpon>SystemAudioProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Panel\Property\ControllerProperty.resx">
+      <DependentUpon>ControllerProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Panel\Property\Default_Property.resx">
+      <DependentUpon>Default_Property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Panel\Property\SystemAudio\SystemAudioVolumeProperty.resx">
+      <DependentUpon>SystemAudioVolumeProperty.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\NeroxUSBController.exe.config" />
     <None Include="external\libobs\data\bicubic_scale.effect" />
@@ -448,6 +512,12 @@
     <Content Include="bin\Debug\websocket-sharp.dll" />
     <Content Include="bin\Debug\websocket-sharp.xml" />
     <Content Include="bin\Debug\WebSocket4Net.dll" />
+    <None Include="Resources\mute.png" />
+    <None Include="Resources\exitbuttonSelected.png" />
+    <None Include="Resources\settingsbutton.png" />
+    <None Include="Resources\exitbutton.png" />
+    <None Include="data\icon\hidetree.png" />
+    <None Include="data\icon\showtree.png" />
     <Content Include="external\libobs\audio-monitoring\null\null-audio-monitoring.c" />
     <Content Include="external\libobs\audio-monitoring\osx\coreaudio-enum-devices.c" />
     <Content Include="external\libobs\audio-monitoring\osx\coreaudio-output.c" />
@@ -629,6 +699,11 @@
     <Content Include="external\libobs\util\windows\win-registry.h" />
     <Content Include="external\libobs\util\windows\win-version.h" />
     <Content Include="external\libobs\util\windows\WinHandle.hpp" />
+    <None Include="Resources\twitter.png" />
+    <None Include="Resources\twitch.png" />
+    <None Include="Resources\obs.png" />
+    <None Include="Resources\sound.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
