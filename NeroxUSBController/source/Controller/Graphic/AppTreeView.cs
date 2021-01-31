@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
-using NeroxUSBController.Property.SystemAudio;
+using NeroxUSBController.Panel.Property.SystemAudio;
 using NeroxUSBController.Manager;
 using NeroxUSBController.Panel.Property;
 using System.Runtime.InteropServices;
@@ -74,6 +74,7 @@ namespace NeroxUSBController.Controller.Graphic
             TreeNode Audio_Node = parentNode("Audio", "audio", Properties.Resources.sound);
             childNode("Volume", "volume", typeof(SystemAudioVolumeProperty), Properties.Resources.sound, Audio_Node);
             childNode("Mute", "mute", typeof(SystemAudioMuteProperty), Properties.Resources.mute, Audio_Node);
+            childNode("Play", "play", typeof(SystemAudioPlayProperty), Properties.Resources.sound, Audio_Node);
 
 
             TreeNode parentNode(string text, string name, Image icon)

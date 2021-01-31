@@ -208,7 +208,7 @@ namespace NeroxUSBController.Controller.Graphic
             Refresh();
 
             if (property != null)
-                property.SwitchHandler(active);
+                property.ButtonHandler(active);
         }
 
         // Draw a rectangle in the indicated Rectangle

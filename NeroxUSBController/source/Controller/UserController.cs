@@ -63,7 +63,9 @@ namespace NeroxUSBController.Controller
             TagProperties properties = (TagProperties)node.Tag;
             property = (ControllerProperty)Activator.CreateInstance(properties.PropertyType);
 
+            property.userController = this;
             property.SetPropertyName(node.FullPath.Replace("\\", " - "));
+
             PropertyPanelManager.SetPropertyPanel(property);
             UserControllerManager.Select(this);
             PropertyPanelManager.SetPropertyName();

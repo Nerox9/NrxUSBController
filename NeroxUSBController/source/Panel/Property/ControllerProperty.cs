@@ -1,4 +1,5 @@
-﻿using NeroxUSBController.Controller.Graphic;
+﻿using NeroxUSBController.Controller;
+using NeroxUSBController.Controller.Graphic;
 using NeroxUSBController.Manager;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace NeroxUSBController.Panel.Property
         protected Label PropertyName;
         private Controller.PropertyControlText propertyControlText;
         protected ColorPicker ColorPicker;
+        internal UserController userController;
 
         public ControllerProperty()
         {

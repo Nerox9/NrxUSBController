@@ -263,6 +263,12 @@
     <Compile Include="source\Panel\Property\SystemAudio\SystemAudioMuteProperty.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="source\Panel\Property\SystemAudio\SystemAudioPlayProperty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="source\Panel\Property\SystemAudio\SystemAudioPlayProperty.Designer.cs">
+      <DependentUpon>SystemAudioPlayProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="source\Panel\Property\SystemAudio\SystemAudioProperty.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -358,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="source\Panel\Property\SystemAudio\SystemAudioMuteProperty.resx">
       <DependentUpon>SystemAudioMuteProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Panel\Property\SystemAudio\SystemAudioPlayProperty.resx">
+      <DependentUpon>SystemAudioPlayProperty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="source\Panel\Property\SystemAudio\SystemAudioProperty.resx">
       <DependentUpon>SystemAudioProperty.cs</DependentUpon>

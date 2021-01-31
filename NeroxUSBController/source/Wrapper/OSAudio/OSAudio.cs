@@ -13,7 +13,7 @@ using NAudio.CoreAudioApi.Interfaces;
 
 namespace NeroxUSBController.Wrapper.OSAudio
 {
-    class OSAudio
+    public class OSAudio
     {
         MMDevice device;
         OSAudioApp application;

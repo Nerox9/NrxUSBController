@@ -1,4 +1,5 @@
-﻿using NeroxUSBController.Panel.Property;
+﻿using NeroxUSBController.Controller;
+using NeroxUSBController.Panel.Property;
 using System;
 using System.Collections.Generic;
 using System.Linq;
