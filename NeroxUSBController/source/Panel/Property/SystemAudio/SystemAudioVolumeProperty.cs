@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeroxUSBController.Manager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace NeroxUSBController.Panel.Property.SystemAudio
 
         protected void devices_DropDown(object sender, EventArgs e)
         {
-            deviceList = audio.GetDeviceNamesandIDs();
+            deviceList = AudioDeviceManager.outputDeviceList;
             devices.DataSource = deviceList;
         }
 

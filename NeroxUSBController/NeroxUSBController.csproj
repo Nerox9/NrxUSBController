@@ -251,6 +251,7 @@
     <Compile Include="source\Controller\Graphic\DragImage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="source\Manager\AudioDeviceManager.cs" />
     <Compile Include="source\Manager\PanelManager.cs" />
     <Compile Include="source\Manager\ProjectColor.cs" />
     <Compile Include="source\Manager\UserControllerManager.cs" />

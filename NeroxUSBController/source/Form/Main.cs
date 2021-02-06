@@ -25,6 +25,7 @@ namespace NeroxUSBController
         {
             InitializeComponent();
 
+            AudioDeviceManager.RefreshDevices();
             PropertyPanelManager.SetPropertyPanel(propertyPanel);
             PanelManager.CorePanel = corePanel;
             PanelManager.MainPanel = mainPanel;

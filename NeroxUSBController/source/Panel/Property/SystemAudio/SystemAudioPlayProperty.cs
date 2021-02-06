@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using NAudio;
 using NAudio.Wave;
 using NeroxUSBController.Controller.Graphic;
+using NeroxUSBController.Manager;
 
 namespace NeroxUSBController.Panel.Property.SystemAudio
 {
@@ -70,7 +71,7 @@ namespace NeroxUSBController.Panel.Property.SystemAudio
 
         private void devices_DropDown(object sender, EventArgs e)
         {
-            deviceList = audio.GetDeviceNamesandIDs();
+            deviceList = AudioDeviceManager.outputDeviceList;
             devices.DataSource = deviceList;
         }
 

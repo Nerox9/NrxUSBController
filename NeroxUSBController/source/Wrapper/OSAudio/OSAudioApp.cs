@@ -18,7 +18,14 @@ namespace NeroxUSBController.Wrapper.OSAudio
 
         internal OSAudioApp(MMDevice device)
         {
-            aev = device.AudioEndpointVolume;
+            try
+            {
+                aev = device.AudioEndpointVolume;
+            }
+            catch(InvalidCastException)
+            {
+                Console.WriteLine("AudioEndpointVolume Error");
+            }
             State = AudioSessionState.AudioSessionStateActive;
         }
 

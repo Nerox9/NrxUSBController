@@ -10,6 +10,7 @@ using NAudio.Mixer;
 using NAudio.Wave;
 using System.Diagnostics;
 using NAudio.CoreAudioApi.Interfaces;
+using NeroxUSBController.Manager;
 
 namespace NeroxUSBController.Wrapper.OSAudio
 {
@@ -18,6 +19,11 @@ namespace NeroxUSBController.Wrapper.OSAudio
         MMDevice device;
         OSAudioApp application;
         OSAudioApp master;
+        
+        public OSAudio()
+        {
+            
+        }
 
         public void SetMasterVolume(float volume)
         {
@@ -87,30 +93,8 @@ namespace NeroxUSBController.Wrapper.OSAudio
 
         public void SetDevice(int dev)
         {
-            device = GetDevices()[dev];
+            device = AudioDeviceManager.outputDevices[dev];
             SetMasterApp();
-        }
-
-        public Dictionary<string, MMDevice> GetDeviceNames()
-        {
-            return GetDevices().ToDictionary(d => d.FriendlyName, d => d);
-        }
-
-        public List<string> GetDeviceNamesandIDs()
-        {
-            return GetDevices().Select(d => d.FriendlyName).ToList();
-        }
-
-        MMDevice[] GetDevices()
-        {
-            return GetDeviceCollection().ToArray();
-        }
-
-        MMDeviceCollection GetDeviceCollection()
-        {
-            MMDeviceEnumerator MMDE = new MMDeviceEnumerator();
-            MMDeviceCollection deviceCollection = MMDE.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active);
-            return deviceCollection;
         }
 
         OSAudioApp SetMasterApp()

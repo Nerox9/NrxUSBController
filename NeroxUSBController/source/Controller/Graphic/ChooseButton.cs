@@ -54,12 +54,12 @@ namespace NeroxUSBController.Controller.Graphic
             ActiveColor = Color.White;
             Margin = new Padding(5);
 
-            this.AllowDrop = true;
-            this.DoubleBuffered = true;
+            AllowDrop = true;
+            DoubleBuffered = true;
 
-            this.DragEnter += chooseButton_DragEnter;
-            this.DragDrop += dragDrop;
-            this.Click += OnMouseClick;
+            DragEnter += chooseButton_DragEnter;
+            DragDrop += dragDrop;
+            Click += OnMouseClick;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -81,7 +81,7 @@ namespace NeroxUSBController.Controller.Graphic
 
             e.Graphics.FillPath(foreBrush, buttonPath);
             e.Graphics.DrawPath(pathPen, slotPath);
-            e.Graphics.DrawString(text, this.Font, (active) ? textBrush : borderBrush, borderRectangle, stringFormat);
+            e.Graphics.DrawString(text, Font, (active) ? textBrush : borderBrush, borderRectangle, stringFormat);
 
             if (Icon != null)
                 e.Graphics.DrawImage(Icon, 24, 16, 48, 48);
@@ -211,11 +211,8 @@ namespace NeroxUSBController.Controller.Graphic
                 property.ButtonHandler(active);
         }
 
-        // Draw a rectangle in the indicated Rectangle
-        // rounding the indicated corners.
-        private GraphicsPath MakeRoundedRect(
-            RectangleF rect, float xradius, float yradius,
-            bool round_ul, bool round_ur, bool round_lr, bool round_ll)
+        // Draw a rectangle in the indicated Rectangle rounding the indicated corners.
+        private GraphicsPath MakeRoundedRect(RectangleF rect, float xradius, float yradius, bool round_ul, bool round_ur, bool round_lr, bool round_ll)
         {
             // Make a GraphicsPath to draw the rectangle.
             PointF point1, point2;

@@ -79,8 +79,7 @@ namespace NeroxUSBController.Controller.Graphic
                     RotAngle = temp_angle;
                     this.Refresh();
                 }
-
-                // TODO: check low value does not exceed to 0 sometimes
+                
                 float normal = AngleNormalized(RotAngle);
                 
                 if(property != null)
@@ -113,7 +112,7 @@ namespace NeroxUSBController.Controller.Graphic
         private float AngleNormalized(int angle)
         {
             float normalAngle = ((float)angle - (float)LowLimit) / ((float)HighLimit - (float)LowLimit);
-            return normalAngle;
+            return (float)Math.Round(normalAngle, 2);
         }
 
         protected override void dragDrop(object sender, DragEventArgs e)
